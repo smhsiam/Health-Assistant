@@ -1,0 +1,8 @@
+node_modules/
+.env
+server/uploads/*
+!server/uploads/.gitkeep
+evaluation/reports/
+evaluation/answer_sheet/
+dist/
+.DS_Store
