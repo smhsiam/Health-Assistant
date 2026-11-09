@@ -1,13 +1,25 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 
 function Navbar() {
   const { lang, changeLanguage, t } = useLanguage();
+  const { user, logout } = useAuth();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const closeMenu = () => setOpen(false);
   const linkClass = ({ isActive }) => (isActive ? 'active' : '');
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    showToast(t('loggedOut'), 'success');
+    navigate('/');
+  };
 
   return (
     <header className="site-header">
@@ -44,9 +56,27 @@ function Navbar() {
             >
               {lang === 'en' ? 'বাংলা' : 'EN'}
             </button>
-            <Link to="/login" className="btn-signin">
-              {t('login')}
-            </Link>
+
+            {user ? (
+              <>
+                <span className="user-chip">
+                  <i className="fa-solid fa-user"></i>
+                  {user.name.split(' ')[0]}
+                </span>
+                <button
+                  type="button"
+                  className="btn-signin"
+                  onClick={handleLogout}
+                >
+                  {t('logout')}
+                </button>
+              </>
+            ) : (
+              <Link to="/login" className="btn-signin">
+                {t('login')}
+              </Link>
+            )}
+
             <button
               type="button"
               className="icon-btn menu-btn"

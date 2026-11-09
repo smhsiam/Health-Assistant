@@ -40,27 +40,11 @@ function Footer() {
             <li>{t('consultDoctor')}</li>
           </ul>
         </div>
-
-        <div>
-          <h4>{t('projectTitle')}</h4>
-          <ul>
-            <li>
-              <a
-                href="https://github.com/smhsiam/Health-Assistant"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fa-brands fa-github"></i> GitHub
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <span>{t('disclaimer')}</span>
-          <span>{t('projectLine')}</span>
         </div>
       </div>
     </footer>

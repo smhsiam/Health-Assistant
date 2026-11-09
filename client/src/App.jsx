@@ -1,7 +1,10 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -31,12 +34,40 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<ComingSoon title="login" />} />
-          <Route path="/register" element={<ComingSoon title="register" />} />
-          <Route path="/dashboard" element={<ComingSoon title="dashboard" />} />
-          <Route path="/upload" element={<ComingSoon title="upload" />} />
-          <Route path="/history" element={<ComingSoon title="history" />} />
-          <Route path="/trends" element={<ComingSoon title="trends" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <ComingSoon title="dashboard" />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/upload"
+            element={
+              <ProtectedRoute>
+                <ComingSoon title="upload" />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <ProtectedRoute>
+                <ComingSoon title="history" />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/trends"
+            element={
+              <ProtectedRoute>
+                <ComingSoon title="trends" />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
