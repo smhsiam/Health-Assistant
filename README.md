@@ -14,9 +14,9 @@ Health Assistant is a reading aid, not a medical opinion. It never diagnoses, ne
 
 | Name | Student ID | Role |
 |---|---|---|
-| MD. Huzaifa Orfa Siam Uddin (Team Leader) | 11230321258 | AI integration, data, QA and documentation |
-| MD Tanzir Rana Rubence | 11230321262 | Backend and database |
-| Mahim Islam Medul | 11230321409 | Frontend and UI |
+| MD. Huzaifa Orfa Siam Uddin (Team Leader) | 11230321258 | AI integration, UI, Data, Database, QA and Documentation |
+| MD Tanzir Rana Rubence | 11230321262 | Backend |
+| Mahim Islam Medul | 11230321409 | Frontend |
 
 ## Objectives
 
