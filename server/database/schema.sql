@@ -6,9 +6,21 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS profiles (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(100) NOT NULL,
+  relation VARCHAR(30) NOT NULL DEFAULT 'self',
+  birth_year INTEGER,
+  sex VARCHAR(10),
+  is_self BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS reports (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  profile_id INTEGER NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
   file_name VARCHAR(255) NOT NULL,
   report_date DATE,
   explanation_en TEXT,
@@ -34,22 +46,8 @@ CREATE TABLE IF NOT EXISTS report_values (
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+CREATE INDEX IF NOT EXISTS idx_profiles_user_id ON profiles(user_id);
 CREATE INDEX IF NOT EXISTS idx_reports_user_id ON reports(user_id);
+CREATE INDEX IF NOT EXISTS idx_reports_profile_id ON reports(profile_id);
 CREATE INDEX IF NOT EXISTS idx_values_report_id ON report_values(report_id);
 CREATE INDEX IF NOT EXISTS idx_values_test_name ON report_values(test_name);
-
-CREATE TABLE IF NOT EXISTS profiles (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  name VARCHAR(100) NOT NULL,
-  relation VARCHAR(30) NOT NULL DEFAULT 'self',
-  birth_year INTEGER,
-  sex VARCHAR(10),
-  is_self BOOLEAN NOT NULL DEFAULT FALSE,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
-ALTER TABLE reports ADD COLUMN IF NOT EXISTS profile_id INTEGER REFERENCES profiles(id) ON DELETE CASCADE;
-
-CREATE INDEX IF NOT EXISTS idx_profiles_user_id ON profiles(user_id);
-CREATE INDEX IF NOT EXISTS idx_reports_profile_id ON reports(profile_id);
