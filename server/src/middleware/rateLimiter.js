@@ -16,4 +16,12 @@ const apiLimiter = rateLimit({
   message: { message: 'Too many requests. Please slow down' },
 });
 
-module.exports = { authLimiter, apiLimiter };
+const uploadLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Too many uploads. Please try again in a few minutes' },
+});
+
+module.exports = { authLimiter, apiLimiter, uploadLimiter };
