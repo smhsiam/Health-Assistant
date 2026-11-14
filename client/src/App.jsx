@@ -5,6 +5,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import UploadReport from './pages/UploadReport';
+import ReportDetail from './pages/ReportDetail';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -48,7 +50,15 @@ function App() {
             path="/upload"
             element={
               <ProtectedRoute>
-                <ComingSoon title="upload" />
+                <UploadReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reports/:id"
+            element={
+              <ProtectedRoute>
+                <ReportDetail />
               </ProtectedRoute>
             }
           />
