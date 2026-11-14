@@ -20,9 +20,31 @@ const toNumber = (input) => {
   return Number.isFinite(number) ? number : null;
 };
 
+const nameCandidates = (name) => {
+  const text = String(name || '');
+  const list = [normalizeName(text)];
+
+  const inside = text.match(/\(([^)]*)\)/);
+  if (inside) {
+    list.push(normalizeName(inside[1]));
+  }
+
+  const outside = normalizeName(text.replace(/\([^)]*\)/g, ' '));
+  if (outside) {
+    list.push(outside);
+  }
+
+  return list.filter(Boolean);
+};
+
 const findTest = (name) => {
-  const clean = normalizeName(name);
-  return referenceRanges.find((test) => test.names.includes(clean)) || null;
+  for (const candidate of nameCandidates(name)) {
+    const match = referenceRanges.find((test) => test.names.includes(candidate));
+    if (match) {
+      return match;
+    }
+  }
+  return null;
 };
 
 const unitMatches = (test, unit) => test.units.includes(normalizeUnit(unit));

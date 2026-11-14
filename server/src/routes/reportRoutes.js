@@ -1,11 +1,17 @@
 const express = require('express');
-const { previewText } = require('../controllers/reportController');
+const {
+  createReport,
+  listReports,
+  getReport,
+} = require('../controllers/reportController');
 const { protect } = require('../middleware/authMiddleware');
 const { uploadSingle } = require('../middleware/uploadMiddleware');
 const { uploadLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
 
-router.post('/preview-text', protect, uploadLimiter, uploadSingle, previewText);
+router.post('/', protect, uploadLimiter, uploadSingle, createReport);
+router.get('/', protect, listReports);
+router.get('/:id', protect, getReport);
 
 module.exports = router;
