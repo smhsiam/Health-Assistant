@@ -100,4 +100,4 @@ npm run dev
 
 ## Data and privacy
 
-This repository currently contains no real patient data. Development uses clearly labeled synthetic reports. I plan to collect real data in a future phase and update the project with appropriate consent, privacy, and security safeguards. Secrets are stored only in .env files, which are never committed.
+This repository currently contains no real patient data. Development uses clearly labeled synthetic reports. We plan to collect real data in a future phase and update the project with appropriate consent, privacy, and security safeguards. Secrets are stored only in .env files, which are never committed.
