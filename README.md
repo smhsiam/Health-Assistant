@@ -2,9 +2,16 @@
 
 An AI medical report explainer for patients in Bangladesh. It reads laboratory reports, explains them safely in Bangla and English, and measures its own accuracy.
 
-Course: CSE4104, AI-Based Software Project Development, Section 7B, Team CSE4104-7B-T06
-University: Northern University of Business and Technology, Khulna
-Submitted to: Md. Riaz Mahmud, Assistant Professor, Department of Computer Science and Engineering
+Course: CSE4104, 
+AI-Based Software Project Development, 
+Section 7B, Team CSE4104-7B-T06,
+University: Northern University of Business and Technology, Khulna.
+
+Submitted to: 
+Md. Riaz Mahmud, 
+Assistant Professor, 
+Department of Computer Science and Engineering,
+Northern University of Business and Technology, Khulna.
 
 ## Important notice
 
@@ -93,4 +100,4 @@ npm run dev
 
 ## Data and privacy
 
-No real patient data is stored in this repository. Development uses clearly labelled synthetic reports. Secrets live only in .env files, which are never committed.
+This repository currently contains no real patient data. Development uses clearly labeled synthetic reports. I plan to collect real data in a future phase and update the project with appropriate consent, privacy, and security safeguards. Secrets are stored only in .env files, which are never committed.
