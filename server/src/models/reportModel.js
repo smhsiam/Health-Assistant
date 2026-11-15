@@ -75,7 +75,12 @@ const listByUser = async (userId, profileId) => {
             to_char(r.report_date, 'YYYY-MM-DD') AS report_date,
             r.has_critical, r.status, r.created_at,
             count(v.id) AS value_count,
-            count(v.id) FILTER (WHERE v.flag IN ('high', 'low')) AS abnormal_count
+            count(v.id) FILTER (WHERE v.flag IN ('high', 'low')) AS abnormal_count,
+            count(v.id) FILTER (WHERE v.needs_review) AS review_count,
+            COALESCE(
+              array_agg(v.test_name ORDER BY v.id) FILTER (WHERE v.id IS NOT NULL),
+              '{}'
+            ) AS test_names
      FROM reports r
      LEFT JOIN report_values v ON v.report_id = r.id
      WHERE r.user_id = $1 AND ($2::integer IS NULL OR r.profile_id = $2)

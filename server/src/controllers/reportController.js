@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const { hasPdfHeader, extractPdfText } = require('../services/pdfTextService');
 const { parseReportText } = require('../services/reportParser');
-const { evaluate } = require('../services/ruleEngine');
+const { evaluate, findTest } = require('../services/ruleEngine');
 const { checkCritical, urgencyMessage } = require('../services/triageService');
 const reportModel = require('../models/reportModel');
 const valueModel = require('../models/valueModel');
@@ -178,11 +178,26 @@ const listReports = async (req, res, next) => {
     const rows = await reportModel.listByUser(req.user.id, profileId);
 
     res.json({
-      reports: rows.map((row) => ({
-        ...formatReport(row),
-        valueCount: Number(row.value_count),
-        abnormalCount: Number(row.abnormal_count),
-      })),
+      reports: rows.map((row) => {
+        const names = row.test_names || [];
+        const categories = [];
+
+        names.forEach((name) => {
+          const test = findTest(name);
+          if (test && !categories.includes(test.category)) {
+            categories.push(test.category);
+          }
+        });
+
+        return {
+          ...formatReport(row),
+          valueCount: Number(row.value_count),
+          abnormalCount: Number(row.abnormal_count),
+          reviewCount: Number(row.review_count),
+          testNames: names,
+          categories,
+        };
+      }),
     });
   } catch (error) {
     next(error);

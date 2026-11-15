@@ -208,6 +208,28 @@ const bn = {
   reportNotFound: 'এই রিপোর্ট পাওয়া যায়নি',
   reportLoadFailed: 'রিপোর্ট লোড করা যায়নি। আবার চেষ্টা করুন।',
   tryAgain: 'আবার চেষ্টা করুন',
+
+    historyTitle: 'আমার রিপোর্ট',
+  historySub: 'আপনার আপলোড করা সব রিপোর্ট এক জায়গায়',
+  profileFilter: 'প্রোফাইল',
+  allProfiles: 'সব প্রোফাইল',
+  filterAll: 'সব',
+  onlyAttention: 'শুধু যেগুলোতে নজর দেওয়া দরকার',
+  sortLabel: 'সাজান',
+  sortNewest: 'নতুন আগে',
+  sortOldest: 'পুরনো আগে',
+  viewGrid: 'গ্রিড দৃশ্য',
+  viewList: 'তালিকা দৃশ্য',
+  showing: '{total}টির মধ্যে {n}টি রিপোর্ট দেখাচ্ছে',
+  noReportsTitle: 'এখনো কোনো রিপোর্ট নেই',
+  noReportsText: 'আপনার প্রথম ল্যাব রিপোর্ট আপলোড করুন, এখানে দেখা যাবে।',
+  noMatchTitle: 'কোনো রিপোর্ট মেলেনি',
+  noMatchText: 'অন্য শব্দে খুঁজুন অথবা ছাঁকনি মুছে দিন।',
+  clearFilters: 'ছাঁকনি মুছুন',
+  allInRange: 'সব সীমার মধ্যে',
+  cardTests: '{n}টি পরীক্ষা',
+  openReport: 'রিপোর্ট খুলুন',
+  listLoadFailed: 'আপনার রিপোর্ট লোড করা যায়নি। আবার চেষ্টা করুন।',
 };
 
 export default bn;

@@ -207,6 +207,28 @@ const en = {
   reportNotFound: 'This report was not found',
   reportLoadFailed: 'The report could not be loaded. Please try again.',
   tryAgain: 'Try again',
+
+    historyTitle: 'My reports',
+  historySub: 'All the reports you have uploaded, in one place',
+  profileFilter: 'Profile',
+  allProfiles: 'All profiles',
+  filterAll: 'All',
+  onlyAttention: 'Only reports that need attention',
+  sortLabel: 'Sort',
+  sortNewest: 'Newest first',
+  sortOldest: 'Oldest first',
+  viewGrid: 'Grid view',
+  viewList: 'List view',
+  showing: 'Showing {n} of {total} reports',
+  noReportsTitle: 'No reports yet',
+  noReportsText: 'Upload your first lab report and it will appear here.',
+  noMatchTitle: 'No reports match',
+  noMatchText: 'Try a different search or clear the filters.',
+  clearFilters: 'Clear filters',
+  allInRange: 'All in range',
+  cardTests: '{n} tests',
+  openReport: 'Open report',
+  listLoadFailed: 'Your reports could not be loaded. Please try again.',
 };
 
 export default en;

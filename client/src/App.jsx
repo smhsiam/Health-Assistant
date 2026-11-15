@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import UploadReport from './pages/UploadReport';
 import ReportDetail from './pages/ReportDetail';
+import History from './pages/History';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -66,7 +67,7 @@ function App() {
             path="/history"
             element={
               <ProtectedRoute>
-                <ComingSoon title="history" />
+                <History />
               </ProtectedRoute>
             }
           />
