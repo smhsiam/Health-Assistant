@@ -91,4 +91,12 @@ const listByUser = async (userId, profileId) => {
   return result.rows;
 };
 
-module.exports = { createWithValues, findOwned, listByUser };
+const deleteOwned = async (reportId, userId) => {
+  const result = await pool.query(
+    'DELETE FROM reports WHERE id = $1 AND user_id = $2 RETURNING id',
+    [reportId, userId]
+  );
+  return result.rowCount > 0;
+};
+
+module.exports = { createWithValues, findOwned, listByUser, deleteOwned };

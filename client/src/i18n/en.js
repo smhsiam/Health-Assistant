@@ -229,6 +229,81 @@ const en = {
   cardTests: '{n} tests',
   openReport: 'Open report',
   listLoadFailed: 'Your reports could not be loaded. Please try again.',
+
+    editValue: 'Edit this value',
+  unitLabel: 'Unit',
+  refLowLabel: 'Lowest normal value',
+  refHighLabel: 'Highest normal value',
+  editHint:
+    'Match these to your original report. Leave a reference box empty if the report has none.',
+  save: 'Save',
+  cancel: 'Cancel',
+  saving: 'Saving',
+  valueSaved: 'Value updated and checked again',
+  correctedNote: 'You edited this value',
+  errValueNumber: 'Enter the result as a number, for example 12.4',
+  errRangeNumber: 'Enter the reference values as numbers, or leave them empty',
+  errRangeOrder: 'The lowest value cannot be higher than the highest value',
+  deleteReport: 'Delete report',
+  deleteTitle: 'Delete this report?',
+  deleteText:
+    'The report and all its values will be removed from your account. This cannot be undone.',
+  deleteConfirm: 'Yes, delete',
+  deleting: 'Deleting',
+  reportDeleted: 'Report deleted',
+  deleteFailed: 'The report could not be deleted. Please try again.',
+  sumButton: 'Summary for your doctor',
+  sumTitle: 'Lab report summary',
+  sumFrom: 'Prepared by Health Assistant for the patient to show a doctor',
+  sumPatient: 'Patient',
+  sumPrepared: 'Prepared on',
+  sumAttention: 'Values outside the reference range',
+  sumUnchecked: 'Values that could not be checked',
+  sumInRange: 'Values within the reference range',
+  sumNone: 'None',
+  sumNote:
+    'The values were read automatically from the patient\'s own report and checked by fixed rules. A reading error is possible, so please compare with the original laboratory report. This summary is not a diagnosis.',
+  print: 'Print or save as PDF',
+  backToReport: 'Back to report',
+
+    trendsTitle: 'Trends',
+  trendsSub: 'See how a test changes from report to report',
+  pickTest: 'Choose a test (the number is how many reports include it)',
+  trendNoData: 'No trends yet',
+  trendNoDataText:
+    'Upload at least two reports with the same test to compare them. Three or more give a clear trend.',
+  trendLatest: 'Latest value',
+  trendNarrationTitle: 'In plain words',
+  trendRising: 'Your {test} has gone up over {n} reports, from {from} to {to}.',
+  trendFalling: 'Your {test} has gone down over {n} reports, from {from} to {to}.',
+  trendStable:
+    'Your {test} has stayed about the same over {n} reports, from {from} to {to}.',
+  trendMixed:
+    'Your {test} has gone up and down over {n} reports, from {from} to {to}.',
+  trendTwoRising:
+    'Between your two reports, your {test} went up from {from} to {to}. At least three reports are needed to call this a trend.',
+  trendTwoFalling:
+    'Between your two reports, your {test} went down from {from} to {to}. At least three reports are needed to call this a trend.',
+  trendTwoStable:
+    'Between your two reports, your {test} stayed about the same, from {from} to {to}. At least three reports are needed to call this a trend.',
+  trendCloser: 'The latest value is closer to the reference range than the first one.',
+  trendFurther: 'The latest value is further from the reference range than the first one.',
+  trendWithin: 'Both the first and the latest values are inside the reference range.',
+  trendSame: 'The distance from the reference range is about the same as before.',
+  trendNeedMore:
+    'You have {n} report with this test. Add at least 3 reports to see a trend.',
+  trendChartLabel: 'Line chart of {test} over time',
+  trendBandNote: 'The green band is the reference range used for your latest value.',
+  trendDoctorLine:
+    'A trend is only a pattern in your numbers. Your doctor can tell you what it means for you.',
+  trendLoadFailed: 'Trends could not be loaded. Please try again.',
+  colDate: 'Date',
+
+    explTitle: 'What your results mean',
+  explIntro: 'Short explanations in plain words. They explain the test, not your health.',
+  explNormalGroup: 'Values inside the range ({n})',
+  explOther: 'বাংলায় দেখুন',
+  explHide: 'Hide',
 };
 
 export default en;

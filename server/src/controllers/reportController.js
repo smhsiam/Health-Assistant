@@ -3,6 +3,7 @@ const { hasPdfHeader, extractPdfText } = require('../services/pdfTextService');
 const { parseReportText } = require('../services/reportParser');
 const { evaluate, findTest } = require('../services/ruleEngine');
 const { checkCritical, urgencyMessage } = require('../services/triageService');
+const { explainValue } = require('../services/explanationService');
 const reportModel = require('../models/reportModel');
 const valueModel = require('../models/valueModel');
 const profileModel = require('../models/profileModel');
@@ -22,6 +23,7 @@ const formatValue = (row) => ({
   confidence: toNumber(row.confidence),
   needsReview: row.needs_review,
   isCorrected: row.is_corrected,
+  explanation: explainValue(row),
 });
 
 const formatReport = (row) => ({
@@ -230,4 +232,10 @@ const getReport = async (req, res, next) => {
   }
 };
 
-module.exports = { createReport, listReports, getReport };
+module.exports = {
+  createReport,
+  listReports,
+  getReport,
+  formatReport,
+  formatValue,
+};

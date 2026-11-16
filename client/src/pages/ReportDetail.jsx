@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import api from '../api/axios';
 import { useLanguage } from '../context/LanguageContext';
+import { useToast } from '../context/ToastContext';
 import UrgencyBanner from '../components/UrgencyBanner';
 import DoctorNotice from '../components/DoctorNotice';
 import ValueTable from '../components/ValueTable';
+import ExplanationSection from '../components/ExplanationSection';
 
 function ReportDetail() {
   const { id } = useParams();
   const { t } = useLanguage();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
 
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -45,6 +51,31 @@ function ReportDetail() {
       cancelled = true;
     };
   }, [id, attempt]);
+
+  const handleSave = async (valueId, form) => {
+    const response = await api.put(`/reports/${id}/values/${valueId}`, {
+      value: form.value,
+      unit: form.unit,
+      refLow: form.refLow,
+      refHigh: form.refHigh,
+    });
+
+    setData(response.data);
+    showToast(t('valueSaved'), 'success');
+  };
+
+  const handleDelete = async () => {
+    setDeleting(true);
+
+    try {
+      await api.delete(`/reports/${id}`);
+      showToast(t('reportDeleted'), 'success');
+      navigate('/history');
+    } catch (err) {
+      showToast(t('deleteFailed'), 'error');
+      setDeleting(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -134,15 +165,56 @@ function ReportDetail() {
         </div>
       </div>
 
-      <ValueTable values={values} />
+      <ValueTable values={values} editable onSave={handleSave} />
+
+      <ExplanationSection values={values} />
 
       <DoctorNotice />
 
+      {confirmDelete && (
+        <div className="confirm-box" role="alertdialog" aria-labelledby="delete-title">
+          <strong id="delete-title">{t('deleteTitle')}</strong>
+          <p>{t('deleteText')}</p>
+          <div className="result-actions">
+            <button
+              type="button"
+              className="btn-danger"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? t('deleting') : t('deleteConfirm')}
+            </button>
+            <button
+              type="button"
+              className="btn-outline"
+              onClick={() => setConfirmDelete(false)}
+              disabled={deleting}
+            >
+              {t('cancel')}
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="result-actions">
-        <Link to="/upload" className="btn-primary">
+        <Link to={`/reports/${id}/summary`} className="btn-primary">
+          <i className="fa-solid fa-file-medical"></i>
+          {t('sumButton')}
+        </Link>
+        <Link to="/upload" className="btn-outline">
           <i className="fa-solid fa-file-arrow-up"></i>
           {t('uploadAnother')}
         </Link>
+        {!confirmDelete && (
+          <button
+            type="button"
+            className="btn-quiet-danger"
+            onClick={() => setConfirmDelete(true)}
+          >
+            <i className="fa-solid fa-trash"></i>
+            {t('deleteReport')}
+          </button>
+        )}
       </div>
     </div>
   );

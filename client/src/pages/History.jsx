@@ -277,7 +277,7 @@ function History() {
 
       {!loading && error && (
         <div className="empty-state">
-          <i className="fa-solid fa-cloud-exclamation empty-icon"></i>
+          <i className="fa-solid fa-triangle-exclamation empty-icon"></i>
           <h3>{t('listLoadFailed')}</h3>
           <button
             type="button"

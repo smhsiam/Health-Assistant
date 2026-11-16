@@ -7,7 +7,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import UploadReport from './pages/UploadReport';
 import ReportDetail from './pages/ReportDetail';
+import Summary from './pages/Summary';
 import History from './pages/History';
+import Trends from './pages/Trends';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -64,6 +66,14 @@ function App() {
             }
           />
           <Route
+            path="/reports/:id/summary"
+            element={
+              <ProtectedRoute>
+                <Summary />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/history"
             element={
               <ProtectedRoute>
@@ -75,7 +85,7 @@ function App() {
             path="/trends"
             element={
               <ProtectedRoute>
-                <ComingSoon title="trends" />
+                <Trends />
               </ProtectedRoute>
             }
           />
