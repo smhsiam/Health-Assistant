@@ -24,6 +24,8 @@ function UploadReport() {
   const [error, setError] = useState('');
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [aiAvailable, setAiAvailable] = useState(false);
+  const [useAi, setUseAi] = useState(false);
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -37,6 +39,11 @@ function UploadReport() {
         }
       })
       .catch(() => setError(t('errNetwork')));
+
+    api
+      .get('/health')
+      .then((response) => setAiAvailable(Boolean(response.data.ai)))
+      .catch(() => setAiAvailable(false));
   }, []);
 
   const chooseFile = (picked) => {
@@ -84,6 +91,7 @@ function UploadReport() {
     if (reportDate) {
       form.append('reportDate', reportDate);
     }
+    form.append('useAi', useAi && aiAvailable ? 'true' : 'false');
     form.append('file', file);
 
     setUploading(true);
@@ -187,6 +195,21 @@ function UploadReport() {
                 </>
               )}
             </label>
+          </div>
+
+          <div className="ai-option">
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={useAi && aiAvailable}
+                onChange={(e) => setUseAi(e.target.checked)}
+                disabled={uploading || !aiAvailable}
+              />
+              {t('aiOptionLabel')}
+            </label>
+            <p className="hint">
+              {aiAvailable ? t('aiOptionHint') : t('aiOptionOff')}
+            </p>
           </div>
 
           {uploading && (

@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const { hasPdfHeader, extractPdfText } = require('../services/pdfTextService');
-const { parseReportText } = require('../services/reportParser');
+const { extractItems } = require('../services/extractionService');
 const { evaluate, findTest } = require('../services/ruleEngine');
 const { checkCritical, urgencyMessage } = require('../services/triageService');
 const { explainValue } = require('../services/explanationService');
@@ -91,6 +91,8 @@ const createReport = async (req, res, next) => {
       });
     }
 
+    const useAi = String(req.body.useAi || '') === 'true';
+
     const validHeader = await hasPdfHeader(file.path);
 
     if (!validHeader) {
@@ -116,16 +118,19 @@ const createReport = async (req, res, next) => {
       });
     }
 
-    const items = parseReportText(extracted.text);
+    const outcome = await extractItems(extracted.text, { useAi });
+    const items = outcome.items;
 
     if (items.length === 0) {
       return res.status(422).json({
-        message: 'No test results could be found in this report',
+        message: outcome.aiFailed
+          ? 'The AI reading service could not read this report right now. Please try again later'
+          : 'No test results could be found in this report',
       });
     }
 
     const rows = items.map((item) => {
-      const result = evaluate(item, { sex: profile.sex });
+      const result = evaluate(item, profile);
       const critical = checkCritical(item);
 
       return {
@@ -136,8 +141,8 @@ const createReport = async (req, res, next) => {
         refHigh: result.refHigh,
         flag: result.flag,
         isCritical: critical.isCritical,
-        confidence: null,
-        needsReview: result.flag === 'unknown',
+        confidence: item.confidence,
+        needsReview: result.flag === 'unknown' || item.verify,
       };
     });
 
@@ -157,6 +162,7 @@ const createReport = async (req, res, next) => {
       report: formatReport(saved.report),
       values: saved.values.map(formatValue),
       urgencyMessage: hasCritical ? urgencyMessage : null,
+      aiUsed: outcome.usedAi,
     });
   } catch (error) {
     next(error);

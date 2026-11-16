@@ -99,7 +99,7 @@ const updateValue = async (req, res, next) => {
 
     const profile = await profileModel.findOwned(report.profile_id, req.user.id);
     const item = { name: existing.test_name, value, unit, refLow, refHigh };
-    const result = evaluate(item, { sex: profile ? profile.sex : null });
+    const result = evaluate(item, profile || {});
     const critical = checkCritical(item);
 
     const changed =

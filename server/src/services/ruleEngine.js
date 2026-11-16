@@ -1,5 +1,7 @@
 const referenceRanges = require('../data/referenceRanges');
 
+const MINOR_YEARS = 19;
+
 const normalizeName = (name) =>
   String(name || '')
     .toLowerCase()
@@ -18,6 +20,18 @@ const toNumber = (input) => {
   }
   const number = Number(input);
   return Number.isFinite(number) ? number : null;
+};
+
+const readBirthYear = (person) => {
+  const raw =
+    person.birthYear !== undefined ? person.birthYear : person.birth_year;
+  const year = toNumber(raw);
+  return year !== null && Number.isInteger(year) ? year : null;
+};
+
+const isMinor = (profile) => {
+  const year = readBirthYear(profile || {});
+  return year !== null && new Date().getFullYear() - year < MINOR_YEARS;
 };
 
 const nameCandidates = (name) => {
@@ -75,7 +89,8 @@ const pickRange = (test, sex) => {
   };
 };
 
-const evaluate = (item, profile = {}) => {
+const evaluate = (item, profile) => {
+  const person = profile || {};
   const test = findTest(item.name);
   const value = toNumber(item.value);
   const printedLow = toNumber(item.refLow);
@@ -110,12 +125,17 @@ const evaluate = (item, profile = {}) => {
     return result;
   }
 
+  if (isMinor(person)) {
+    result.reason = 'adult_range_only';
+    return result;
+  }
+
   if (!unitMatches(test, item.unit)) {
     result.reason = 'unit_not_recognized';
     return result;
   }
 
-  const range = pickRange(test, profile.sex);
+  const range = pickRange(test, person.sex);
   result.refLow = range.low;
   result.refHigh = range.high;
   result.rangeSource = range.source;
@@ -129,5 +149,6 @@ module.exports = {
   findTest,
   unitMatches,
   classify,
+  isMinor,
   evaluate,
 };

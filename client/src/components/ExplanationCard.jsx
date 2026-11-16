@@ -22,14 +22,23 @@ function ExplanationCard({ item }) {
   const other = lang === 'en' ? 'bn' : 'en';
   const flag = flagIcons[item.flag] ? item.flag : 'unknown';
   const text = item.explanation || {};
+  const readByAi = item.confidence !== null && item.confidence !== undefined;
 
   return (
     <article className={`expl-card ${item.isCritical ? 'critical' : ''}`}>
       <div className="expl-head">
         <strong>{item.testName}</strong>
-        <span className={`badge badge-${flag === 'unknown' ? 'review' : flag}`}>
-          <i className={`fa-solid ${flagIcons[flag]}`}></i>
-          {t(flagKeys[flag])}
+        <span className="expl-badges">
+          {readByAi && (
+            <span className="badge badge-ai">
+              <i className="fa-solid fa-robot"></i>
+              {t('readByAi')}
+            </span>
+          )}
+          <span className={`badge badge-${flag === 'unknown' ? 'review' : flag}`}>
+            <i className={`fa-solid ${flagIcons[flag]}`}></i>
+            {t(flagKeys[flag])}
+          </span>
         </span>
       </div>
 

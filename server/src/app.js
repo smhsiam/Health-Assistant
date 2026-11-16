@@ -4,6 +4,7 @@ const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const trendRoutes = require('./routes/trendRoutes');
+const { isEnabled } = require('./services/aiClient');
 const { apiLimiter } = require('./middleware/rateLimiter');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
@@ -14,7 +15,7 @@ app.use(express.json({ limit: '100kb' }));
 app.use('/api', apiLimiter);
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', ai: isEnabled() });
 });
 
 app.use('/api/auth', authRoutes);

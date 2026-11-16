@@ -59,10 +59,14 @@ function Navbar() {
 
             {user ? (
               <>
-                <span className="user-chip">
+                <Link
+                  to="/profiles"
+                  className="user-chip"
+                  aria-label={t('profilesTitle')}
+                >
                   <i className="fa-solid fa-user"></i>
                   {user.name.split(' ')[0]}
-                </span>
+                </Link>
                 <button
                   type="button"
                   className="btn-signin"

@@ -304,6 +304,49 @@ const en = {
   explNormalGroup: 'Values inside the range ({n})',
   explOther: 'বাংলায় দেখুন',
   explHide: 'Hide',
+
+    profilesTitle: 'Profiles',
+  profilesSub: 'Keep reports for yourself and your family in separate places',
+  addProfile: 'Add a family member',
+  editProfile: 'Edit profile',
+  editShort: 'Edit',
+  deleteProfile: 'Delete',
+  profileName: 'Name',
+  profileRelation: 'Relation',
+  relSelf: 'Yourself',
+  relMother: 'Mother',
+  relFather: 'Father',
+  relSpouse: 'Spouse',
+  relChild: 'Child',
+  relSibling: 'Sibling',
+  relOther: 'Other',
+  you: 'You',
+  birthYearLabel: 'Year of birth (optional)',
+  sexLabel: 'Sex (optional)',
+  sexMale: 'Male',
+  sexFemale: 'Female',
+  sexNotSet: 'Not set',
+  ageNotSet: 'Age not set',
+  ageAbout: 'About {n} years old',
+  profileHint:
+    'Used only to choose the right reference range when your report does not print one. You can leave both empty.',
+  childNote:
+    'For anyone under 19 we do not use our own adult ranges. Only the range printed on the report is used.',
+  errProfileName: 'Enter a name',
+  errBirthYear: 'Enter a four digit year, for example 1990',
+  profileSaved: 'Profile saved',
+  profileDeleted: 'Profile deleted',
+  profileDeleteFailed: 'The profile could not be deleted. Please try again.',
+  profileDeleteTitle: 'Delete {name}?',
+  profileDeleteText:
+    'This profile and all of its reports will be removed from your account. This cannot be undone.',
+  profileLoadFailed: 'Profiles could not be loaded. Please try again.',
+
+    aiOptionLabel: 'Let AI help read this report if our own reader cannot',
+  aiOptionHint:
+    'Used only when our own reader finds fewer than three tests. Lines with personal details such as name, age, dates and phone numbers are removed first, and the remaining text is sent to an outside AI service. Anything the AI reads is marked, so you can check it against your original report.',
+  aiOptionOff: 'AI reading is not switched on in this version.',
+  readByAi: 'Read by AI',
 };
 
 export default en;

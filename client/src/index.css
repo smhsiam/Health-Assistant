@@ -4131,3 +4131,144 @@ img {
   color: var(--primary-dark);
   cursor: pointer;
 }
+
+a.user-chip {
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+a.user-chip:hover {
+  background: #cdeee9;
+  transform: translateY(-1px);
+}
+
+.profiles-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.profile-form {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.profile-form h2 {
+  margin-bottom: 14px;
+  font-size: 20px;
+  color: var(--navy);
+}
+
+.profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 16px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-top strong {
+  display: block;
+  color: var(--navy);
+}
+
+.profile-rel {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--indigo));
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.profile-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  font-size: 14px;
+  color: var(--black);
+}
+
+.profile-facts i {
+  width: 18px;
+  margin-right: 8px;
+  color: var(--primary);
+}
+
+.profile-note {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  margin: 0;
+  background: #fef9c3;
+  color: #854d0e;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.profile-note i {
+  margin-top: 3px;
+}
+
+@media (max-width: 640px) {
+  .profile-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-option {
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  background: #f8fbff;
+  border: 1px solid #dbe7f5;
+  border-radius: 12px;
+}
+
+.ai-option .check {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.ai-option .hint {
+  margin: 8px 0 0 24px;
+}
+
+.badge-ai {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.expl-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

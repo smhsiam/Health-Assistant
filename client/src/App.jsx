@@ -10,6 +10,7 @@ import ReportDetail from './pages/ReportDetail';
 import Summary from './pages/Summary';
 import History from './pages/History';
 import Trends from './pages/Trends';
+import Profiles from './pages/Profiles';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -86,6 +87,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Trends />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profiles"
+            element={
+              <ProtectedRoute>
+                <Profiles />
               </ProtectedRoute>
             }
           />
