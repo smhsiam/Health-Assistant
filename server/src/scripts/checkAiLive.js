@@ -15,7 +15,14 @@ const text = [
 ].join('\n');
 
 const run = async () => {
+  const baseUrl = String(process.env.AI_BASE_URL || '').trim();
+  const model = String(process.env.AI_MODEL || '').trim();
+  const key = String(process.env.AI_API_KEY || '').trim();
+
   console.log('AI configured:', isEnabled());
+  console.log('Address in use:', baseUrl + '/chat/completions');
+  console.log('Model in use:', model);
+  console.log('Key length:', key.length, '| starts with AIza:', key.startsWith('AIza'));
 
   if (!isEnabled()) {
     console.log('Fill AI_BASE_URL, AI_API_KEY and AI_MODEL in server/.env first');
