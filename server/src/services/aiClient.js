@@ -13,6 +13,26 @@ const isEnabled = () => {
   return Boolean(baseUrl && key && model);
 };
 
+const readErrorDetail = async (response) => {
+  try {
+    let body = await response.json();
+
+    if (Array.isArray(body)) {
+      body = body[0];
+    }
+
+    const raw = body && (body.error ? body.error.message || body.error : body.message);
+
+    if (typeof raw !== 'string') {
+      return '';
+    }
+
+    return raw.replace(/[A-Za-z0-9_-]{30,}/g, '[hidden]').slice(0, 250);
+  } catch (error) {
+    return '';
+  }
+};
+
 const callOnce = async (system, user) => {
   const { baseUrl, key, model } = readConfig();
   const controller = new AbortController();
@@ -36,16 +56,8 @@ const callOnce = async (system, user) => {
       signal: controller.signal,
     });
 
-        if (!response.ok) {
-      let detail = '';
-
-      try {
-        const body = await response.json();
-        const message = body && (body.error ? body.error.message || body.error : body.message);
-        detail = typeof message === 'string' ? message.slice(0, 200) : '';
-      } catch (error) {
-        detail = '';
-      }
+    if (!response.ok) {
+      const detail = await readErrorDetail(response);
 
       throw new Error(
         detail
