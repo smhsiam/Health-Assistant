@@ -5,7 +5,12 @@ const { testConnection } = require('./config/db');
 const secret = process.env.JWT_SECRET || '';
 
 if (secret.length < 32 || secret.startsWith('change_this')) {
-  console.error('Set a long random JWT_SECRET in server/.env');
+  console.error('Set a long random JWT_SECRET in the environment');
+  process.exit(1);
+}
+
+if (process.env.NODE_ENV === 'production' && !process.env.CLIENT_URL) {
+  console.error('Set CLIENT_URL to the address of the website');
   process.exit(1);
 }
 

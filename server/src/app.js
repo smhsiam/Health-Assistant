@@ -10,6 +10,9 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express();
 
+app.set('trust proxy', 1);
+app.disable('x-powered-by');
+
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json({ limit: '100kb' }));
 app.use('/api', apiLimiter);
