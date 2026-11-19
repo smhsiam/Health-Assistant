@@ -8,3 +8,4 @@ evaluation/reports/
 evaluation/answer_sheet/
 dist/
 .DS_Store
+evaluation/predictions/
