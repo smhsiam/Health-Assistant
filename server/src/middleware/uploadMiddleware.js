@@ -6,21 +6,29 @@ const crypto = require('crypto');
 const uploadDir = path.join(__dirname, '..', '..', 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
 
-const maxMb = Number(process.env.MAX_FILE_SIZE_MB) || 5;
+const maxMb = Number(process.env.MAX_FILE_SIZE_MB) || 8;
+
+const allowedTypes = {
+  '.pdf': ['application/pdf'],
+  '.jpg': ['image/jpeg'],
+  '.jpeg': ['image/jpeg'],
+  '.png': ['image/png'],
+};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
-  filename: (req, file, cb) =>
-    cb(null, `${crypto.randomBytes(16).toString('hex')}.pdf`),
+  filename: (req, file, cb) => {
+    const extension = path.extname(file.originalname).toLowerCase();
+    cb(null, `${crypto.randomBytes(16).toString('hex')}${extension}`);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-  const isPdf =
-    file.mimetype === 'application/pdf' &&
-    path.extname(file.originalname).toLowerCase() === '.pdf';
+  const extension = path.extname(file.originalname).toLowerCase();
+  const mimeList = allowedTypes[extension];
 
-  if (!isPdf) {
-    const error = new Error('Only PDF reports are supported right now');
+  if (!mimeList || !mimeList.includes(file.mimetype)) {
+    const error = new Error('Only PDF, JPG or PNG reports are supported');
     error.status = 400;
     return cb(error);
   }
@@ -48,7 +56,7 @@ const uploadSingle = (req, res, next) => {
 
     if (error instanceof multer.MulterError) {
       return res.status(400).json({
-        message: 'Upload failed. Send one PDF file in the field named file',
+        message: 'Upload failed. Send one file in the field named file',
       });
     }
 
