@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
-const { hasPdfHeader, extractPdfText } = require('../services/pdfTextService');
+const { extractPdfText } = require('../services/pdfTextService');
+const { extractImageText } = require('../services/ocrService');
 const { extractItems } = require('../services/extractionService');
 const { evaluate, findTest } = require('../services/ruleEngine');
 const { checkCritical, urgencyMessage } = require('../services/triageService');
@@ -7,6 +8,8 @@ const { explainValue } = require('../services/explanationService');
 const reportModel = require('../models/reportModel');
 const valueModel = require('../models/valueModel');
 const profileModel = require('../models/profileModel');
+
+const LOW_OCR_CONFIDENCE = 70;
 
 const toNumber = (input) =>
   input === null || input === undefined ? null : Number(input);
@@ -63,11 +66,42 @@ const readReportDate = (input) => {
   return text > tomorrow ? false : text;
 };
 
+const detectKind = async (filePath) => {
+  const handle = await fs.open(filePath, 'r');
+
+  try {
+    const buffer = Buffer.alloc(8);
+    await handle.read(buffer, 0, 8, 0);
+
+    if (buffer.toString('latin1', 0, 5) === '%PDF-') {
+      return 'pdf';
+    }
+
+    if (buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) {
+      return 'image';
+    }
+
+    const pngSignature = Buffer.from([
+      0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
+    ]);
+
+    if (buffer.equals(pngSignature)) {
+      return 'image';
+    }
+
+    return null;
+  } finally {
+    await handle.close();
+  }
+};
+
 const createReport = async (req, res, next) => {
   const file = req.file;
 
   if (!file) {
-    return res.status(400).json({ message: 'Choose a PDF file to upload' });
+    return res
+      .status(400)
+      .json({ message: 'Choose a PDF, JPG or PNG report to upload' });
   }
 
   try {
@@ -93,33 +127,65 @@ const createReport = async (req, res, next) => {
 
     const useAi = String(req.body.useAi || '') === 'true';
 
-    const validHeader = await hasPdfHeader(file.path);
+    const kind = await detectKind(file.path);
 
-    if (!validHeader) {
-      return res.status(400).json({ message: 'This file is not a valid PDF' });
+    if (!kind) {
+      return res
+        .status(400)
+        .json({ message: 'This file is not a valid PDF, JPG or PNG' });
     }
 
-    const buffer = await fs.readFile(file.path);
+    let text = '';
+    let ocrConfidence = null;
+    let weakOcr = false;
 
-    let extracted;
-    try {
-      extracted = await extractPdfText(buffer);
-    } catch (error) {
-      return res.status(422).json({
-        message:
-          'This PDF could not be read. It may be damaged or protected by a password',
-      });
+    if (kind === 'pdf') {
+      const buffer = await fs.readFile(file.path);
+
+      let extracted;
+      try {
+        extracted = await extractPdfText(buffer);
+      } catch (error) {
+        return res.status(422).json({
+          message:
+            'This PDF could not be read. It may be damaged or protected by a password',
+        });
+      }
+
+      if (extracted.likelyScanned) {
+        return res.status(422).json({
+          message:
+            'This PDF has no readable text. Take a clear photo of the report and upload it as JPG or PNG',
+        });
+      }
+
+      text = extracted.text;
+    } else {
+      let ocr;
+      try {
+        ocr = await extractImageText(file.path);
+      } catch (error) {
+        return res.status(422).json({
+          message: 'This image could not be read. Try another photo',
+        });
+      }
+
+      if (ocr.tooShort) {
+        return res.status(422).json({
+          message:
+            'No readable text was found in this image. Take a clear, well lit photo of the whole page',
+        });
+      }
+
+      text = ocr.text;
+      ocrConfidence = ocr.confidence;
+      weakOcr = ocr.confidence < LOW_OCR_CONFIDENCE;
     }
 
-    if (extracted.likelyScanned) {
-      return res.status(422).json({
-        message:
-          'No readable text was found. Scanned or photo reports are not supported yet',
-      });
-    }
-
-    const outcome = await extractItems(extracted.text, { useAi });
-    const items = outcome.items;
+    const outcome = await extractItems(text, { useAi });
+    const items = weakOcr
+      ? outcome.items.map((item) => ({ ...item, verify: true }))
+      : outcome.items;
 
     if (items.length === 0) {
       return res.status(422).json({
@@ -163,6 +229,8 @@ const createReport = async (req, res, next) => {
       values: saved.values.map(formatValue),
       urgencyMessage: hasCritical ? urgencyMessage : null,
       aiUsed: outcome.usedAi,
+      source: kind,
+      ocrConfidence,
     });
   } catch (error) {
     next(error);
