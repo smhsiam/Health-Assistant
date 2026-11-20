@@ -4,7 +4,19 @@ import api from '../api/axios';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
 
-const MAX_MB = 5;
+const MAX_MB = 8;
+
+const allowed = {
+  pdf: ['application/pdf'],
+  jpg: ['image/jpeg'],
+  jpeg: ['image/jpeg'],
+  png: ['image/png'],
+};
+
+const getExtension = (name) => name.toLowerCase().split('.').pop();
+
+const isImageFile = (item) =>
+  ['jpg', 'jpeg', 'png'].includes(getExtension(item.name));
 
 const formatSize = (bytes) =>
   bytes >= 1024 * 1024
@@ -20,6 +32,7 @@ function UploadReport() {
   const [profileId, setProfileId] = useState('');
   const [reportDate, setReportDate] = useState('');
   const [file, setFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState('');
   const [dragOver, setDragOver] = useState(false);
   const [error, setError] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -28,6 +41,7 @@ function UploadReport() {
   const [useAi, setUseAi] = useState(false);
 
   const today = new Date().toISOString().slice(0, 10);
+  const imageSelected = Boolean(file) && isImageFile(file);
 
   useEffect(() => {
     api
@@ -46,6 +60,18 @@ function UploadReport() {
       .catch(() => setAiAvailable(false));
   }, []);
 
+  useEffect(() => {
+    if (!file || !isImageFile(file)) {
+      setPreviewUrl('');
+      return undefined;
+    }
+
+    const url = URL.createObjectURL(file);
+    setPreviewUrl(url);
+
+    return () => URL.revokeObjectURL(url);
+  }, [file]);
+
   const chooseFile = (picked) => {
     setError('');
 
@@ -53,19 +79,17 @@ function UploadReport() {
       return;
     }
 
-    const isPdf =
-      picked.type === 'application/pdf' &&
-      picked.name.toLowerCase().endsWith('.pdf');
+    const mimeList = allowed[getExtension(picked.name)];
 
-    if (!isPdf) {
+    if (!mimeList || !mimeList.includes(picked.type)) {
       setFile(null);
-      setError(t('errNotPdf'));
+      setError(t('errNotSupported'));
       return;
     }
 
     if (picked.size > MAX_MB * 1024 * 1024) {
       setFile(null);
-      setError(t('errTooLarge'));
+      setError(t('errBigFile'));
       return;
     }
 
@@ -82,7 +106,7 @@ function UploadReport() {
     }
 
     if (!file) {
-      setError(t('errChooseFile'));
+      setError(t('errChooseAny'));
       return;
     }
 
@@ -116,11 +140,18 @@ function UploadReport() {
     }
   };
 
+  const processingText =
+    progress < 100
+      ? t('uploading')
+      : imageSelected
+        ? t('readingImage')
+        : t('checkingValues');
+
   return (
     <div className="container page">
       <div className="upload-wrap">
         <h1 className="page-title">{t('uploadTitle')}</h1>
-        <p className="page-subtitle">{t('uploadSub')}</p>
+        <p className="page-subtitle">{t('uploadSubAny')}</p>
 
         <form className="card upload-card" onSubmit={handleSubmit} noValidate>
           {error && (
@@ -176,13 +207,32 @@ function UploadReport() {
             >
               <input
                 type="file"
-                accept="application/pdf,.pdf"
+                accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png"
                 onChange={(e) => chooseFile(e.target.files[0])}
                 disabled={uploading}
               />
-              <span className="drop-icon">
-                <i className={file ? 'fa-solid fa-file-pdf' : 'fa-solid fa-cloud-arrow-up'}></i>
-              </span>
+              {previewUrl ? (
+                <img
+                  src={previewUrl}
+                  alt=""
+                  style={{
+                    maxHeight: 160,
+                    maxWidth: '100%',
+                    objectFit: 'contain',
+                    borderRadius: 8,
+                  }}
+                />
+              ) : (
+                <span className="drop-icon">
+                  <i
+                    className={
+                      file
+                        ? 'fa-solid fa-file-pdf'
+                        : 'fa-solid fa-cloud-arrow-up'
+                    }
+                  ></i>
+                </span>
+              )}
               {file ? (
                 <>
                   <strong>{file.name}</strong>
@@ -190,11 +240,12 @@ function UploadReport() {
                 </>
               ) : (
                 <>
-                  <strong>{t('dropTitle')}</strong>
-                  <small>{t('dropHint')}</small>
+                  <strong>{t('dropTitleAny')}</strong>
+                  <small>{t('dropHintAny')}</small>
                 </>
               )}
             </label>
+            {imageSelected && <p className="hint">{t('photoTip')}</p>}
           </div>
 
           <div className="ai-option">
@@ -215,7 +266,7 @@ function UploadReport() {
           {uploading && (
             <div className="processing">
               <div className="spinner"></div>
-              <p>{progress < 100 ? t('uploading') : t('checkingValues')}</p>
+              <p>{processingText}</p>
               <div className="progress">
                 <span style={{ width: `${progress}%` }}></span>
               </div>
@@ -235,7 +286,7 @@ function UploadReport() {
         <div className="privacy-line">
           <i className="fa-solid fa-lock"></i>
           <p>
-            {t('privacyLine')} {t('scanNote')}
+            {t('privacyLine')} {t('photoNote')}
           </p>
         </div>
       </div>

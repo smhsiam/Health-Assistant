@@ -347,6 +347,16 @@ const en = {
     'Used only when our own reader finds fewer than three tests. Lines with personal details such as name, age, dates and phone numbers are removed first, and the remaining text is sent to an outside AI service. Anything the AI reads is marked, so you can check it against your original report.',
   aiOptionOff: 'AI reading is not switched on in this version.',
   readByAi: 'Read by AI',
+
+    uploadSubAny: 'Choose a PDF report or a clear photo of it and we will read the values and check each one',
+  dropTitleAny: 'Drop your report here or click to choose',
+  dropHintAny: 'PDF, JPG or PNG, up to 8 MB',
+  errNotSupported: 'Please choose a PDF, JPG or PNG file',
+  errBigFile: 'This file is too large. The maximum size is 8 MB',
+  errChooseAny: 'Choose a report file first',
+  photoTip: 'Photo tips: use good light, keep the page flat and include the whole page. Blurry photos can be read wrongly.',
+  readingImage: 'Reading the text from your photo. This can take up to a minute',
+  photoNote: 'Reading a photo can make mistakes, so always check the values against your original report.',
 };
 
 export default en;
