@@ -4293,3 +4293,13 @@ a.user-chip:hover {
 .admin-actions{display:flex;gap:8px;align-items:center}
 .btn-reject{border:1px solid #8f1d1d;background:#fff;color:#8f1d1d;padding:10px 18px;border-radius:12px;font-weight:600;cursor:pointer}
 .form-group textarea{width:100%;min-height:110px;resize:vertical}
+
+.share-box{background:#fff;border:1px solid #dbe6ea;border-radius:16px;padding:20px;margin-top:24px}
+.share-box h3{margin:0 0 4px;color:#0F3D47}
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share-row select{flex:1;min-width:200px}
+.share-list{list-style:none;padding:0;margin:16px 0 0}
+.share-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #e6eef1;flex-wrap:wrap}
+.shared-card{background:#fff;border:1px solid #dbe6ea;border-radius:16px;padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.readonly-note{background:#fdebe3;color:#8a3b17;border-radius:12px;padding:10px 16px;margin:16px 0;font-weight:600}
+.patient-strip{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0;color:#2f4a53}

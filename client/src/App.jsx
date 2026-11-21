@@ -15,6 +15,8 @@ import Profiles from './pages/Profiles';
 import Doctors from './pages/Doctors';
 import DoctorProfile from './pages/DoctorProfile';
 import AdminDoctors from './pages/AdminDoctors';
+import SharedReports from './pages/SharedReports';
+import SharedReportView from './pages/SharedReportView';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
@@ -117,6 +119,22 @@ function App() {
             element={
               <ProtectedRoute roles={['doctor']}>
                 <DoctorProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor/shared"
+            element={
+              <ProtectedRoute roles={['doctor']}>
+                <SharedReports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor/shared/:id"
+            element={
+              <ProtectedRoute roles={['doctor']}>
+                <SharedReportView />
               </ProtectedRoute>
             }
           />

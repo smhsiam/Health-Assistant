@@ -20,7 +20,10 @@ const adminLinks = [
   { to: '/trends', label: 'trends' },
 ];
 
-const doctorLinks = [{ to: '/doctor/profile', label: 'tmNavMyProfile' }];
+const doctorLinks = [
+  { to: '/doctor/shared', label: 'tsNavShared' },
+  { to: '/doctor/profile', label: 'tmNavMyProfile' },
+];
 
 const linksFor = (role) => {
   if (role === 'doctor') {

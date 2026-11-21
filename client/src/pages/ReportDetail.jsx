@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
 import UrgencyBanner from '../components/UrgencyBanner';
 import DoctorNotice from '../components/DoctorNotice';
+import ShareDoctors from '../components/ShareDoctors';
 import ValueTable from '../components/ValueTable';
 import ExplanationSection from '../components/ExplanationSection';
 
@@ -170,6 +171,8 @@ function ReportDetail() {
       <ExplanationSection values={values} />
 
       <DoctorNotice />
+
+      <ShareDoctors reportId={id} />
 
       {confirmDelete && (
         <div className="confirm-box" role="alertdialog" aria-labelledby="delete-title">
