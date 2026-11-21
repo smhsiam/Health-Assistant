@@ -45,13 +45,20 @@ export const AuthProvider = ({ children }) => {
     saveSession(response.data, true);
   };
 
+  const registerDoctor = async (details) => {
+    const response = await api.post('/auth/register-doctor', details);
+    saveSession(response.data, true);
+  };
+
   const logout = () => {
     clearSession();
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, register, registerDoctor, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

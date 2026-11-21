@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import DoctorRegister from './pages/DoctorRegister';
 import UploadReport from './pages/UploadReport';
 import ReportDetail from './pages/ReportDetail';
 import Summary from './pages/Summary';
@@ -14,7 +15,7 @@ import Profiles from './pages/Profiles';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
-const authPaths = ['/login', '/register'];
+const authPaths = ['/login', '/register', '/register-doctor'];
 
 function ComingSoon({ title }) {
   const { t } = useLanguage();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register-doctor" element={<DoctorRegister />} />
           <Route
             path="/dashboard"
             element={

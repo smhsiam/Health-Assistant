@@ -4,6 +4,7 @@ import AuthLayout from '../components/AuthLayout';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
+import { homeFor } from '../utils/roleHome';
 
 function Login() {
   const { user, login } = useAuth();
@@ -18,7 +19,7 @@ function Login() {
   const [serverError, setServerError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const target = (location.state && location.state.from) || '/upload';
+  const target = (location.state && location.state.from) || homeFor(user);
 
   if (user) {
     return <Navigate to={target} replace />;
