@@ -12,10 +12,14 @@ import Summary from './pages/Summary';
 import History from './pages/History';
 import Trends from './pages/Trends';
 import Profiles from './pages/Profiles';
+import Doctors from './pages/Doctors';
+import DoctorProfile from './pages/DoctorProfile';
+import AdminDoctors from './pages/AdminDoctors';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
 const authPaths = ['/login', '/register', '/register-doctor'];
+const patientRoles = ['patient', 'admin'];
 
 function ComingSoon({ title }) {
   const { t } = useLanguage();
@@ -47,7 +51,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <ComingSoon title="dashboard" />
               </ProtectedRoute>
             }
@@ -55,7 +59,7 @@ function App() {
           <Route
             path="/upload"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <UploadReport />
               </ProtectedRoute>
             }
@@ -63,7 +67,7 @@ function App() {
           <Route
             path="/reports/:id"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <ReportDetail />
               </ProtectedRoute>
             }
@@ -71,7 +75,7 @@ function App() {
           <Route
             path="/reports/:id/summary"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <Summary />
               </ProtectedRoute>
             }
@@ -79,7 +83,7 @@ function App() {
           <Route
             path="/history"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <History />
               </ProtectedRoute>
             }
@@ -87,7 +91,7 @@ function App() {
           <Route
             path="/trends"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <Trends />
               </ProtectedRoute>
             }
@@ -95,8 +99,32 @@ function App() {
           <Route
             path="/profiles"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute roles={patientRoles}>
                 <Profiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctors"
+            element={
+              <ProtectedRoute roles={patientRoles}>
+                <Doctors />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor/profile"
+            element={
+              <ProtectedRoute roles={['doctor']}>
+                <DoctorProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/doctors"
+            element={
+              <ProtectedRoute roles={['admin']}>
+                <AdminDoctors />
               </ProtectedRoute>
             }
           />

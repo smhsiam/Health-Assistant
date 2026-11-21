@@ -4273,3 +4273,23 @@ a.user-chip:hover {
   gap: 6px;
 }
 
+
+.doctor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:24px}
+.doctor-card{background:#fff;border:1px solid #dbe6ea;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.doctor-card h3{margin:0;color:#0F3D47}
+.doctor-meta{color:#52707a;font-size:0.9rem;margin:0}
+.doctor-bio{color:#2f4a53;font-size:0.95rem;margin:4px 0 0}
+.doctor-fee{margin-top:auto;padding-top:8px;font-weight:600;color:#0F3D47}
+.status-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:0.85rem;font-weight:600}
+.status-pending{background:#fdebe3;color:#8a3b17}
+.status-verified{background:#e0f3ee;color:#0b5d4d}
+.status-rejected{background:#fde4e4;color:#8f1d1d}
+.search-row{display:flex;gap:8px;margin-top:20px}
+.search-row input{flex:1}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.filter-btn{border:1px solid #0F3D47;background:#fff;color:#0F3D47;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer}
+.filter-btn.active{background:#0F3D47;color:#F4F8FA}
+.admin-card{background:#fff;border:1px solid #dbe6ea;border-radius:16px;padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.admin-actions{display:flex;gap:8px;align-items:center}
+.btn-reject{border:1px solid #8f1d1d;background:#fff;color:#8f1d1d;padding:10px 18px;border-radius:12px;font-weight:600;cursor:pointer}
+.form-group textarea{width:100%;min-height:110px;resize:vertical}

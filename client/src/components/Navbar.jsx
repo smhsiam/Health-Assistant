@@ -5,12 +5,56 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import AnimatedLogo from './AnimatedLogo';
 
+const patientLinks = [
+  { to: '/upload', label: 'upload' },
+  { to: '/history', label: 'history' },
+  { to: '/trends', label: 'trends' },
+  { to: '/doctors', label: 'tmNavDoctors' },
+];
+
+const adminLinks = [
+  { to: '/admin/doctors', label: 'tmNavVerify' },
+  { to: '/doctors', label: 'tmNavDoctors' },
+  { to: '/upload', label: 'upload' },
+  { to: '/history', label: 'history' },
+  { to: '/trends', label: 'trends' },
+];
+
+const doctorLinks = [{ to: '/doctor/profile', label: 'tmNavMyProfile' }];
+
+const linksFor = (role) => {
+  if (role === 'doctor') {
+    return doctorLinks;
+  }
+
+  if (role === 'admin') {
+    return adminLinks;
+  }
+
+  return patientLinks;
+};
+
+const chipTarget = (role) => {
+  if (role === 'doctor') {
+    return '/doctor/profile';
+  }
+
+  if (role === 'admin') {
+    return '/admin/doctors';
+  }
+
+  return '/profiles';
+};
+
 function Navbar() {
   const { lang, changeLanguage, t } = useLanguage();
   const { user, logout } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
+  const role = user ? user.role || 'patient' : null;
+  const menu = linksFor(role);
 
   const closeMenu = () => setOpen(false);
   const linkClass = ({ isActive }) => (isActive ? 'active' : '');
@@ -32,15 +76,16 @@ function Navbar() {
             <NavLink to="/" end className={linkClass} onClick={closeMenu}>
               {t('home')}
             </NavLink>
-            <NavLink to="/upload" className={linkClass} onClick={closeMenu}>
-              {t('upload')}
-            </NavLink>
-            <NavLink to="/history" className={linkClass} onClick={closeMenu}>
-              {t('history')}
-            </NavLink>
-            <NavLink to="/trends" className={linkClass} onClick={closeMenu}>
-              {t('trends')}
-            </NavLink>
+            {menu.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={linkClass}
+                onClick={closeMenu}
+              >
+                {t(item.label)}
+              </NavLink>
+            ))}
           </div>
 
           <div className="nav-actions">
@@ -56,7 +101,7 @@ function Navbar() {
             {user ? (
               <>
                 <Link
-                  to="/profiles"
+                  to={chipTarget(role)}
                   className="user-chip"
                   aria-label={t('profilesTitle')}
                 >
