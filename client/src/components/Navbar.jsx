@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
+import AnimatedLogo from './AnimatedLogo';
 
 function Navbar() {
   const { lang, changeLanguage, t } = useLanguage();
@@ -25,12 +26,7 @@ function Navbar() {
     <header className="site-header">
       <nav className="navbar">
         <div className="container navbar-inner">
-          <Link to="/" className="logo" onClick={closeMenu}>
-            <span className="logo-mark">
-              <i className="fa-solid fa-heart-pulse"></i>
-            </span>
-            <span>{t('appName')}</span>
-          </Link>
+          <AnimatedLogo />
 
           <div className={`nav-links ${open ? 'open' : ''}`}>
             <NavLink to="/" end className={linkClass} onClick={closeMenu}>

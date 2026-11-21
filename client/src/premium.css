@@ -1,0 +1,344 @@
+:root {
+  --gold: #e8b04a;
+  --gold-light: #f6d58e;
+  --gold-deep: #b9822a;
+}
+
+.hero-box.premium {
+  min-height: 640px;
+  background: var(--deep);
+  isolation: isolate;
+}
+
+.hero-photos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.6s ease;
+}
+
+.hero-photo.active {
+  opacity: 1;
+  animation: kenBurns 9s ease-out forwards;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(11, 37, 69, 0.94) 0%, rgba(11, 37, 69, 0.78) 45%, rgba(14, 124, 134, 0.45) 100%),
+    radial-gradient(circle at 85% 15%, rgba(232, 176, 74, 0.28), transparent 45%);
+}
+
+.hero-box.premium .hero-content,
+.hero-box.premium .hero-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-box.premium .hero-badge {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(246, 213, 142, 0.5);
+  color: var(--gold-light);
+  backdrop-filter: blur(8px);
+}
+
+.hero-box.premium .pulse-dot {
+  background: var(--gold);
+}
+
+.hero-box.premium .hero-title {
+  color: var(--white);
+}
+
+.hero-box.premium .gradient-text {
+  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--emerald));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-box.premium .hero-text {
+  color: #d6e6f5;
+}
+
+.hero-box.premium .btn-navy {
+  background: linear-gradient(120deg, var(--gold-deep), var(--gold), var(--gold-light));
+  border-color: var(--gold);
+  color: #2b1b00;
+  box-shadow: 0 14px 30px rgba(232, 176, 74, 0.35);
+}
+
+.hero-box.premium .btn-navy:hover {
+  background: linear-gradient(120deg, var(--gold), var(--gold-light));
+  box-shadow: 0 18px 38px rgba(232, 176, 74, 0.5);
+}
+
+.hero-box.premium .btn-outline {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-box.premium .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.hero-box.premium .chip {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--white);
+  backdrop-filter: blur(8px);
+}
+
+.hero-box.premium .chip i {
+  color: var(--gold-light);
+}
+
+.hero-box.premium .hero-glow {
+  background: radial-gradient(circle, rgba(232, 176, 74, 0.32), transparent 70%);
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.14) translate(-1.5%, -1%);
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-box.premium {
+    min-height: 0;
+  }
+
+  .hero-shade {
+    background: linear-gradient(180deg, rgba(11, 37, 69, 0.92), rgba(11, 37, 69, 0.8));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo.active {
+    animation: none;
+  }
+}
+
+.landing-full {
+  padding: 0;
+}
+
+.landing-full + .banner {
+  margin-top: 0;
+}
+
+.hero-box.premium {
+  min-height: 680px;
+  margin: 0;
+  border-radius: 0;
+  padding: 84px max(20px, calc((100% - 1200px) / 2 + 20px)) 96px;
+}
+
+.hero-box.premium .float-one {
+  top: -26px;
+  left: 4px;
+}
+
+.hero-box.premium .float-two {
+  bottom: -6px;
+  right: 6px;
+}
+
+@media (max-width: 960px) {
+  .hero-box.premium {
+    padding: 56px 20px 64px;
+  }
+}
+
+body .logo.animated-logo span {
+  background: none;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+}
+
+body .logo.animated-logo .logo-word {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+body .logo.animated-logo .logo-gap {
+  display: inline-block;
+  width: 0.3em;
+}
+
+body .logo.animated-logo .logo-letter {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--indigo), var(--primary-dark));
+  background-size: calc(var(--n) * 0.62em) 100%;
+  background-position: calc(var(--i) * -0.62em) 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: logoLetter 9s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+body .logo.animated-logo .logo-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--indigo), var(--primary-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: logoLine 9s ease-in-out infinite;
+}
+
+body .logo.animated-logo .logo-pen {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px 3px rgba(232, 176, 74, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  animation: logoPen 9s ease-in-out infinite;
+}
+
+body .logo.animated-logo:hover .logo-letter {
+  animation: logoHop 0.55s ease both;
+  animation-delay: calc(var(--i) * 0.035s);
+}
+
+@keyframes logoLetter {
+  0%,
+  40% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+  43% {
+    opacity: 0.85;
+    transform: translateY(-2px) scale(1.08);
+    filter: blur(0.5px);
+  }
+  49% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.3) rotate(-14deg);
+    filter: blur(6px);
+  }
+  72% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.3) rotate(10deg);
+    filter: blur(6px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.18);
+    filter: blur(0);
+  }
+  85%,
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes logoLine {
+  0%,
+  44% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  58% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  78% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  86% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+  86.01%,
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes logoPen {
+  0%,
+  40% {
+    left: 0;
+    opacity: 0;
+  }
+  41% {
+    left: 0;
+    opacity: 1;
+  }
+  55% {
+    left: 100%;
+    opacity: 1;
+  }
+  56% {
+    left: 100%;
+    opacity: 0;
+  }
+  78% {
+    left: 0;
+    opacity: 0;
+  }
+  79% {
+    left: 0;
+    opacity: 1;
+  }
+  93% {
+    left: 100%;
+    opacity: 1;
+  }
+  94%,
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes logoHop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-7px) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .logo.animated-logo .logo-letter,
+  body .logo.animated-logo .logo-line,
+  body .logo.animated-logo .logo-pen {
+    animation: none;
+  }
+}

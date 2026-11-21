@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 const SLIDE_MS = 6500;
+const HERO_MS = 5500;
+
+const heroImages = [
+  '/images/family-care.jpg',
+  '/images/lab-tubes.jpg',
+  '/images/report-reading.jpg',
+  '/images/soft-wellness.jpg',
+];
 
 const banners = [
   { id: 1, theme: 'theme-1', visual: 'upload' },
@@ -270,6 +278,19 @@ function Home() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const touchStart = useRef(null);
+    const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return undefined;
+    }
+
+    const timer = setInterval(() => {
+      setHeroIndex((current) => (current + 1) % heroImages.length);
+    }, HERO_MS);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const goPrev = () =>
     setIndex((current) => (current - 1 + banners.length) % banners.length);
@@ -322,8 +343,19 @@ function Home() {
 
   return (
     <>
-      <div className="container landing">
-        <section className="hero-box">
+          <div className="landing-full">
+                <section className="hero-box premium">
+          <div className="hero-photos" aria-hidden="true">
+            {heroImages.map((src, i) => (
+              <div
+                key={src}
+                className={`hero-photo ${i === heroIndex ? 'active' : ''}`}
+                style={{ backgroundImage: `url(${src})` }}
+              ></div>
+            ))}
+            <div className="hero-shade"></div>
+          </div>
+          
           <div className="hero-content fade-up">
             <div className="hero-badge">
               <span className="pulse-dot"></span>
