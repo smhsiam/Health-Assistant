@@ -114,4 +114,6 @@ const askForItems = async (text) => {
   return null;
 };
 
-module.exports = { isEnabled, askForItems };
+const askText = (system, user) => callOnce(system, user);
+
+module.exports = { isEnabled, askForItems, askText };
