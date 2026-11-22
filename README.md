@@ -169,3 +169,24 @@ Profiles and trends have their own routes under /api/profiles and /api/trends.
 ## Data and privacy
 
 This repository contains no real patient data. Development uses clearly labeled synthetic reports and test accounts. Real data will be collected in a later phase, with consent, privacy and security safeguards in place. Secrets are stored only in .env files, which are never committed. Doctors can read only the reports that a patient has shared with them, and sharing ends the moment the patient stops it.
+## Documentation
+
+| Item | Location |
+|---|---|
+| Proposal and SRS | documentation/ |
+| System design document (PDF) | documentation/CSE4104-7B-T06_SystemDesign.pdf |
+| ER diagram (PDF) | documentation/CSE4104-7B-T06_ERDiagram.pdf |
+| Activity diagrams (PDF) | documentation/CSE4104-7B-T06_ActivityDiagram.pdf |
+| Exported diagram images | diagrams/ |
+
+## Folder names
+
+The course suggests the folders frontend, backend and database. This project uses the following names for the same parts.
+
+| Suggested name | Folder in this repository |
+|---|---|
+| frontend | client |
+| backend | server |
+| database | server/database |
+| documentation | documentation |
+| diagrams | diagrams |
