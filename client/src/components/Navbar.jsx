@@ -10,11 +10,13 @@ const patientLinks = [
   { to: '/history', label: 'history' },
   { to: '/trends', label: 'trends' },
   { to: '/doctors', label: 'tmNavDoctors' },
+  { to: '/consultations', label: 'tcNavConsult' },
 ];
 
 const adminLinks = [
   { to: '/admin/doctors', label: 'tmNavVerify' },
   { to: '/doctors', label: 'tmNavDoctors' },
+  { to: '/consultations', label: 'tcNavConsult' },
   { to: '/upload', label: 'upload' },
   { to: '/history', label: 'history' },
   { to: '/trends', label: 'trends' },
@@ -22,6 +24,7 @@ const adminLinks = [
 
 const doctorLinks = [
   { to: '/doctor/shared', label: 'tsNavShared' },
+  { to: '/consultations', label: 'tcNavConsult' },
   { to: '/doctor/profile', label: 'tmNavMyProfile' },
 ];
 

@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import { useLanguage } from '../context/LanguageContext';
 
 function Doctors() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
   const [doctors, setDoctors] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [starting, setStarting] = useState(null);
 
   const load = (specialty) => {
     setLoading(true);
@@ -31,6 +35,28 @@ function Doctors() {
   const handleSearch = (e) => {
     e.preventDefault();
     load(query.trim());
+  };
+
+  const startConsultation = async (doctorId) => {
+    setError('');
+    setStarting(doctorId);
+
+    try {
+      const response = await api.post('/consultations', { doctorId });
+      navigate(`/consultations/${response.data.consultation.id}`);
+    } catch (err) {
+      const status = err.response && err.response.status;
+
+      if (status === 409) {
+        navigate('/consultations');
+        return;
+      }
+
+      const message =
+        err.response && err.response.data && err.response.data.message;
+      setError(message || t('errNetwork'));
+      setStarting(null);
+    }
   };
 
   return (
@@ -83,6 +109,14 @@ function Doctors() {
             <p className="doctor-fee">
               {t('tmFee')}: {doctor.fee} {t('tmBdt')}
             </p>
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={() => startConsultation(doctor.id)}
+              disabled={starting !== null}
+            >
+              {starting === doctor.id ? t('tcStarting') : t('tcStart')}
+            </button>
           </div>
         ))}
       </div>

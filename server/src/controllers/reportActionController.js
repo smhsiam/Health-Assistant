@@ -1,4 +1,5 @@
 const reportModel = require('../models/reportModel');
+const profileModel = require('../models/profileModel');
 const valueModel = require('../models/valueModel');
 const { explainValue } = require('../services/explanationService');
 const { evaluate } = require('../services/ruleEngine');

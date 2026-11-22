@@ -17,11 +17,14 @@ import DoctorProfile from './pages/DoctorProfile';
 import AdminDoctors from './pages/AdminDoctors';
 import SharedReports from './pages/SharedReports';
 import SharedReportView from './pages/SharedReportView';
+import Consultations from './pages/Consultations';
+import ConsultationThread from './pages/ConsultationThread';
 import NotFound from './pages/NotFound';
 import { useLanguage } from './context/LanguageContext';
 
 const authPaths = ['/login', '/register', '/register-doctor'];
 const patientRoles = ['patient', 'admin'];
+const allRoles = ['patient', 'admin', 'doctor'];
 
 function ComingSoon({ title }) {
   const { t } = useLanguage();
@@ -135,6 +138,22 @@ function App() {
             element={
               <ProtectedRoute roles={['doctor']}>
                 <SharedReportView />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/consultations"
+            element={
+              <ProtectedRoute roles={allRoles}>
+                <Consultations />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/consultations/:id"
+            element={
+              <ProtectedRoute roles={allRoles}>
+                <ConsultationThread />
               </ProtectedRoute>
             }
           />
