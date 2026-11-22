@@ -8,16 +8,24 @@ const {
   updateValue,
   deleteReport,
 } = require('../controllers/reportActionController');
-const { protect } = require('../middleware/authMiddleware');
+const { protect, requireRole } = require('../middleware/authMiddleware');
 const { uploadSingle } = require('../middleware/uploadMiddleware');
 const { uploadLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
+const patientOnly = requireRole('patient', 'admin');
 
-router.post('/', protect, uploadLimiter, uploadSingle, createReport);
-router.get('/', protect, listReports);
-router.get('/:id', protect, getReport);
-router.put('/:id/values/:valueId', protect, updateValue);
-router.delete('/:id', protect, deleteReport);
+router.post(
+  '/',
+  protect,
+  patientOnly,
+  uploadLimiter,
+  uploadSingle,
+  createReport
+);
+router.get('/', protect, patientOnly, listReports);
+router.get('/:id', protect, patientOnly, getReport);
+router.put('/:id/values/:valueId', protect, patientOnly, updateValue);
+router.delete('/:id', protect, patientOnly, deleteReport);
 
 module.exports = router;
