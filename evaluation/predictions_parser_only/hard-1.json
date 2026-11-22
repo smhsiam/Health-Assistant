@@ -1,0 +1,14 @@
+{
+  "report": "hard-1.pdf",
+  "split": "dev",
+  "meta": {
+    "ms": 155,
+    "aiRequested": false,
+    "usedAi": false,
+    "aiFailed": false,
+    "model": null,
+    "promptVersion": "v1",
+    "textLines": 13
+  },
+  "items": []
+}

@@ -1,0 +1,155 @@
+{
+  "report": "synthetic-1.pdf",
+  "split": "dev",
+  "meta": {
+    "ms": 40,
+    "aiRequested": false,
+    "usedAi": false,
+    "aiFailed": false,
+    "model": null,
+    "promptVersion": "v1",
+    "textLines": 16
+  },
+  "items": [
+    {
+      "name": "Hemoglobin",
+      "value": 12.4,
+      "unit": "g/dL",
+      "flag": "low",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Hemoglobin is the protein in red blood cells that carries oxygen around your body. Your result is 12.4 g/dL, which is below the reference range (13 to 17). Many things can change this value, so only a doctor can tell what it means for you.",
+        "bn": "হিমোগ্লোবিন লাল রক্তকণিকার একটি প্রোটিন, যা শরীরের সর্বত্র অক্সিজেন বয়ে নিয়ে যায়। আপনার ফলাফল 12.4 g/dL, যা স্বাভাবিক সীমার (13 থেকে 17) চেয়ে কম। অনেক কারণে এই মান বদলাতে পারে, তাই আপনার ক্ষেত্রে এর অর্থ কী তা শুধু ডাক্তারই বলতে পারেন।"
+      }
+    },
+    {
+      "name": "Total WBC Count",
+      "value": 7200,
+      "unit": "/cumm",
+      "flag": "normal",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "White blood cells are part of your body's defence system. This test counts how many are in a small amount of blood. Your result is 7,200 /cumm, which is inside the reference range (4,000 to 11,000).",
+        "bn": "শ্বেত রক্তকণিকা শরীরের প্রতিরক্ষা ব্যবস্থার অংশ। এই পরীক্ষায় অল্প রক্তে এদের সংখ্যা গোনা হয়। আপনার ফলাফল 7,200 /cumm, যা স্বাভাবিক সীমার (4,000 থেকে 11,000) মধ্যে।"
+      }
+    },
+    {
+      "name": "Platelet Count",
+      "value": 15000,
+      "unit": "/cumm",
+      "flag": "low",
+      "critical": true,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Platelets are tiny blood cells that help blood to clot. This test counts them. Your result is 15,000 /cumm, which is below the reference range (150,000 to 450,000). Many things can change this value, so only a doctor can tell what it means for you. This value is far outside the usual range. Please see a doctor soon.",
+        "bn": "প্লেটলেট ছোট রক্তকণিকা, যা রক্ত জমাট বাঁধতে সাহায্য করে। এই পরীক্ষায় এদের সংখ্যা গোনা হয়। আপনার ফলাফল 15,000 /cumm, যা স্বাভাবিক সীমার (150,000 থেকে 450,000) চেয়ে কম। অনেক কারণে এই মান বদলাতে পারে, তাই আপনার ক্ষেত্রে এর অর্থ কী তা শুধু ডাক্তারই বলতে পারেন। এই মান স্বাভাবিক সীমা থেকে অনেক দূরে। অনুগ্রহ করে শিগগির ডাক্তার দেখান।"
+      }
+    },
+    {
+      "name": "Fasting Blood Sugar",
+      "value": 128,
+      "unit": "mg/dL",
+      "flag": "high",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "This test measures the sugar (glucose) in your blood after several hours without food. Your result is 128 mg/dL, which is above the reference range (70 to 99). Many things can change this value, so only a doctor can tell what it means for you.",
+        "bn": "এই পরীক্ষায় কয়েক ঘণ্টা না খেয়ে থাকার পর রক্তে শর্করার (গ্লুকোজ) পরিমাণ মাপা হয়। আপনার ফলাফল 128 mg/dL, যা স্বাভাবিক সীমার (70 থেকে 99) চেয়ে বেশি। অনেক কারণে এই মান বদলাতে পারে, তাই আপনার ক্ষেত্রে এর অর্থ কী তা শুধু ডাক্তারই বলতে পারেন।"
+      }
+    },
+    {
+      "name": "Total Cholesterol",
+      "value": 176,
+      "unit": "mg/dL",
+      "flag": "normal",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Cholesterol is a fatty substance in your blood. This test measures the total amount. Your result is 176 mg/dL, which is inside the reference range (up to 200).",
+        "bn": "কোলেস্টেরল রক্তে থাকা একটি চর্বিজাতীয় পদার্থ। এই পরীক্ষায় এর মোট পরিমাণ মাপা হয়। আপনার ফলাফল 176 mg/dL, যা স্বাভাবিক সীমার (সর্বোচ্চ 200) মধ্যে।"
+      }
+    },
+    {
+      "name": "Serum Creatinine",
+      "value": 0.9,
+      "unit": "mg/dL",
+      "flag": "normal",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Creatinine is a waste product that your kidneys filter out of your blood. This test measures how much is in your blood. Your result is 0.9 mg/dL, which is inside the reference range (0.7 to 1.3).",
+        "bn": "ক্রিয়েটিনিন একটি বর্জ্য পদার্থ, যা কিডনি রক্ত থেকে ছেঁকে বের করে। এই পরীক্ষায় রক্তে এর পরিমাণ মাপা হয়। আপনার ফলাফল 0.9 mg/dL, যা স্বাভাবিক সীমার (0.7 থেকে 1.3) মধ্যে।"
+      }
+    },
+    {
+      "name": "SGPT (ALT)",
+      "value": 62,
+      "unit": "U/L",
+      "flag": "high",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "ALT is an enzyme found mostly in the liver. This test measures how much is in your blood. Your result is 62 U/L, which is above the reference range (0 to 40). Many things can change this value, so only a doctor can tell what it means for you.",
+        "bn": "এএলটি একটি এনজাইম, যা বেশিরভাগ লিভারে থাকে। এই পরীক্ষায় রক্তে এর পরিমাণ মাপা হয়। আপনার ফলাফল 62 U/L, যা স্বাভাবিক সীমার (0 থেকে 40) চেয়ে বেশি। অনেক কারণে এই মান বদলাতে পারে, তাই আপনার ক্ষেত্রে এর অর্থ কী তা শুধু ডাক্তারই বলতে পারেন।"
+      }
+    },
+    {
+      "name": "Vitamin D",
+      "value": 18,
+      "unit": "ng/mL",
+      "flag": "low",
+      "critical": false,
+      "rangeSource": "standard",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Vitamin D helps your body use calcium for your bones. This test measures how much is in your blood. Your result is 18 ng/mL, which is below the reference range (30 to 100). Many things can change this value, so only a doctor can tell what it means for you.",
+        "bn": "ভিটামিন ডি শরীরকে হাড়ের জন্য ক্যালসিয়াম ব্যবহার করতে সাহায্য করে। এই পরীক্ষায় রক্তে এর পরিমাণ মাপা হয়। আপনার ফলাফল 18 ng/mL, যা স্বাভাবিক সীমার (30 থেকে 100) চেয়ে কম। অনেক কারণে এই মান বদলাতে পারে, তাই আপনার ক্ষেত্রে এর অর্থ কী তা শুধু ডাক্তারই বলতে পারেন।"
+      }
+    },
+    {
+      "name": "Potassium",
+      "value": 4.2,
+      "unit": "mmol/L",
+      "flag": "normal",
+      "critical": false,
+      "rangeSource": "report",
+      "confidence": null,
+      "needsReview": false,
+      "explanation": {
+        "en": "Potassium is a mineral that helps your nerves and muscles, including the heart, to work. This test measures how much is in your blood. Your result is 4.2 mmol/L, which is inside the reference range (3.5 to 5).",
+        "bn": "পটাশিয়াম একটি খনিজ, যা হৃদপিণ্ডসহ স্নায়ু ও পেশির কাজে সাহায্য করে। এই পরীক্ষায় রক্তে এর পরিমাণ মাপা হয়। আপনার ফলাফল 4.2 mmol/L, যা স্বাভাবিক সীমার (3.5 থেকে 5) মধ্যে।"
+      }
+    },
+    {
+      "name": "Fasting Glucose",
+      "value": 7.1,
+      "unit": "mmol/L",
+      "flag": "unknown",
+      "critical": false,
+      "rangeSource": "none",
+      "confidence": null,
+      "needsReview": true,
+      "explanation": {
+        "en": "This test measures the sugar (glucose) in your blood after several hours without food. We could not check this value against a reference range. Please compare it with your original report and ask your doctor.",
+        "bn": "এই পরীক্ষায় কয়েক ঘণ্টা না খেয়ে থাকার পর রক্তে শর্করার (গ্লুকোজ) পরিমাণ মাপা হয়। এই মানটি কোনো স্বাভাবিক সীমার সাথে মিলিয়ে দেখা যায়নি। অনুগ্রহ করে আপনার আসল রিপোর্টের সাথে মিলিয়ে নিন এবং ডাক্তারকে জিজ্ঞেস করুন।"
+      }
+    }
+  ]
+}
