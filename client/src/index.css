@@ -948,13 +948,13 @@ img {
 }
 
 :root {
-  --black: #16162e;
-  --navy: #16162e;
-  --off-white: #f8f8fc;
-  --primary-soft: #e3f4f1;
-  --lavender: #ece8fb;
-  --mint: #ddf3f0;
-  --indigo: #4f46e5;
+  --black: #0F2A31;
+  --navy: #0F3D47;
+  --off-white: #F4F8FA;
+  --primary-soft: #E3EFF1;
+  --lavender: #E6EEF1;
+  --mint: #FDEBE3;
+  --indigo: #F59E7B;
 }
 
 @keyframes fadeUp {
@@ -1225,7 +1225,7 @@ img {
   position: relative;
   width: 270px;
   padding: 10px;
-  background: #101028;
+  background: #0A2B33;
   border-radius: 38px;
   box-shadow: 0 30px 60px rgba(22, 22, 46, 0.28);
   transform: rotate(3deg);
@@ -1237,7 +1237,7 @@ img {
   left: 50%;
   width: 80px;
   height: 20px;
-  background: #101028;
+  background: #0A2B33;
   border-radius: 12px;
   transform: translateX(-50%);
   z-index: 2;
@@ -2002,9 +2002,9 @@ img {
 }
 
 :root {
-  --deep: #0b2545;
-  --deep-teal: #0e7c86;
-  --emerald: #19b5a5;
+  --deep: #0F3D47;
+  --deep-teal: #0F3D47;
+  --emerald: #F59E7B;
   --royal: #1d4f91;
   --sky-wash: #f1f6fd;
   --sky-wash-2: #e4effb;
@@ -2100,23 +2100,23 @@ img {
 }
 
 .theme-1 {
-  background: linear-gradient(120deg, #0b2545 0%, #134e7a 48%, #0e7c86 100%);
+  background: linear-gradient(120deg, #0A2B33 0%, #0F3D47 50%, #1B5A66 100%);
 }
 
 .theme-2 {
-  background: linear-gradient(120deg, #0e3b5c 0%, #0e7c86 55%, #19b5a5 100%);
+  background: linear-gradient(120deg, #0F3D47 0%, #1B5A66 58%, #F59E7B 135%);
 }
 
 .theme-3 {
-  background: linear-gradient(120deg, #1b1f5e 0%, #2f3fa8 50%, #0e7c86 100%);
+  background: linear-gradient(120deg, #0A2B33 0%, #0F3D47 58%, #2A7A85 100%);
 }
 
 .theme-4 {
-  background: linear-gradient(120deg, #0b2545 0%, #0f5c73 50%, #19b5a5 100%);
+  background: linear-gradient(120deg, #0F3D47 0%, #174F5C 52%, #F59E7B 125%);
 }
 
 .theme-5 {
-  background: linear-gradient(120deg, #0a3d3a 0%, #0e7c86 55%, #3cc9b7 100%);
+  background: linear-gradient(120deg, #0F3D47 0%, #0A2B33 52%, #1B5A66 100%);
 }
 
 .banner-wave {
@@ -2313,7 +2313,7 @@ img {
   gap: 4px;
   padding: 26px 16px;
   text-align: center;
-  background: #f1faf8;
+  background: #F4F8FA;
   border: 2px dashed #9ad8d0;
   border-radius: 14px;
 }
@@ -2440,7 +2440,7 @@ img {
 }
 
 .bubble-en {
-  background: #eef2ff;
+  background: #E6EEF1;
   border-top-left-radius: 4px;
 }
 
@@ -2826,7 +2826,7 @@ img {
   text-align: center;
   background: var(--white);
   color: var(--black);
-  border: 1px solid #dbe7f5;
+  border: 1px solid #DCE7EA;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(11, 37, 69, 0.06);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
@@ -2840,7 +2840,7 @@ img {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  background: linear-gradient(135deg, #e1f3f1, #e6ecfb);
+  background: linear-gradient(135deg, #E3EFF1, #E6EEF1);
   color: var(--deep-teal);
   border-radius: 18px;
   font-size: 26px;
@@ -2883,7 +2883,7 @@ img {
 .svc-grid:hover .svc-card.featured:not(:hover) {
   background: var(--white);
   color: var(--black);
-  border-color: #dbe7f5;
+  border-color: #DCE7EA;
   box-shadow: 0 6px 18px rgba(11, 37, 69, 0.06);
   transform: none;
 }
@@ -2893,7 +2893,7 @@ img {
 }
 
 .svc-grid:hover .svc-card.featured:not(:hover) .svc-icon {
-  background: linear-gradient(135deg, #e1f3f1, #e6ecfb);
+  background: linear-gradient(135deg, #E3EFF1, #E6EEF1);
   color: var(--deep-teal);
   transform: none;
 }
@@ -3011,7 +3011,7 @@ img {
   gap: 6px;
   padding: 36px 20px;
   text-align: center;
-  background: #f1faf8;
+  background: #F4F8FA;
   border: 2px dashed #9ad8d0;
   border-radius: 14px;
   cursor: pointer;
@@ -3021,7 +3021,7 @@ img {
 
 .drop-area:hover,
 .drop-area.over {
-  background: #e3f4f1;
+  background: #E3EFF1;
   border-color: var(--primary);
   transform: translateY(-2px);
 }
@@ -3520,7 +3520,7 @@ img {
 
 .report-owner {
   padding: 2px 10px;
-  background: #eef2ff;
+  background: #E6EEF1;
   color: var(--indigo);
   border-radius: 999px;
   font-size: 12px;
@@ -3693,7 +3693,7 @@ img {
 
 .edit-panel {
   padding: 16px 20px;
-  background: #f8fbff;
+  background: #F4F8FA;
   border-top: 1px solid var(--border);
 }
 
@@ -4250,8 +4250,8 @@ a.user-chip:hover {
 .ai-option {
   padding: 14px 16px;
   margin-bottom: 20px;
-  background: #f8fbff;
-  border: 1px solid #dbe7f5;
+  background: #F4F8FA;
+  border: 1px solid #DCE7EA;
   border-radius: 12px;
 }
 
