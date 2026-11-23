@@ -87,7 +87,7 @@ const buildUser = (lines, question) =>
   `Values of the report:\n${lines}\n\nQuestion between the markers:\n<<<QUESTION\n${question}\nQUESTION>>>`;
 
 const allowedNumbers = (rows, question) => {
-  const allowed = numbersIn(question);
+  const allowed = numbersIn(toLatinDigits(question));
 
   rows.forEach((row) => {
     [row.value, row.ref_low, row.ref_high].forEach((input) => {
@@ -100,8 +100,11 @@ const allowedNumbers = (rows, question) => {
   return allowed;
 };
 
+const toLatinDigits = (text) =>
+  String(text).replace(/[০-৯]/g, (digit) => String('০১২৩৪৫৬৭৮৯'.indexOf(digit)));
+
 const inventsNumber = (answer, allowed) =>
-  Array.from(numbersIn(answer)).some(
+  Array.from(numbersIn(toLatinDigits(answer))).some(
     (number) => !allowed.has(number) && (number > 10 || !Number.isInteger(number))
   );
 
@@ -128,4 +131,4 @@ const answerQuestion = async (rows, question, lang) => {
   return { answer, answered: true };
 };
 
-module.exports = { answerQuestion };
+module.exports = { answerQuestion, inventsNumber };
