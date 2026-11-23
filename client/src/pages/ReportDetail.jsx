@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import UrgencyBanner from '../components/UrgencyBanner';
 import DoctorNotice from '../components/DoctorNotice';
 import ShareDoctors from '../components/ShareDoctors';
+import AskReport from '../components/AskReport';
 import ValueTable from '../components/ValueTable';
 import ExplanationSection from '../components/ExplanationSection';
 
@@ -169,6 +170,8 @@ function ReportDetail() {
       <ValueTable values={values} editable onSave={handleSave} />
 
       <ExplanationSection values={values} />
+
+      <AskReport reportId={id} />
 
       <DoctorNotice />
 
