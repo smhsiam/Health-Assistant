@@ -49,7 +49,8 @@ Health Assistant is a reading aid, not a medical opinion. The AI never diagnoses
 | Delete a report | Should | Done |
 | Responsive bilingual interface and landing page | Must | Done |
 | Original report shown beside extracted values | Must | Planned |
-| Diet guidance, voice read-aloud, follow-up questions, SMS summary | Should and Could | Planned |
+| Follow up questions about a report, answered by the AI with safety filters and rate limits | Could | Done |
+| Diet guidance, voice read-aloud, SMS summary | Should and Could | Planned |
 | Evaluation against a hand-made answer sheet | Must | In progress |
 | Deployment (Supabase, Render, Vercel) | Must | Planned |
 | New visual design and motion | Extra | Planned |
@@ -147,7 +148,7 @@ node src/scripts/makeAdmin.js your@email.com
 | Group | Routes |
 |---|---|
 | Auth | POST /api/auth/register, POST /api/auth/register-doctor, POST /api/auth/login |
-| Reports | POST /api/reports, GET /api/reports, GET /api/reports/:id, PUT /api/reports/:id/values/:valueId, DELETE /api/reports/:id |
+| Reports | POST /api/reports, GET /api/reports, GET /api/reports/:id, PUT /api/reports/:id/values/:valueId, POST /api/reports/:id/ask, DELETE /api/reports/:id |
 | Doctors | GET /api/doctors, GET /api/doctors/:id, GET and PUT /api/doctors/me |
 | Admin | GET /api/admin/doctors, PUT /api/admin/doctors/:id/status |
 | Sharing | POST /api/shares, GET /api/shares/report/:reportId, DELETE /api/shares/:id, GET /api/shares/incoming, GET /api/shares/incoming/:reportId |
@@ -165,6 +166,7 @@ Profiles and trends have their own routes under /api/profiles and /api/trends.
 6. Message sending has only the general API rate limit. A stricter limit is planned.
 7. Bangla explanations still need review by a person, and the safety test set has not been reviewed by a clinician yet.
 8. Doctors write free text, so nothing in code can fully stop a doctor from naming a medicine. The chat page shows a warning instead.
+9. Follow up answers are filtered by word lists and number checks. The filters are best effort and were tested on a small set of questions, so a doctor should review them before real use.
 
 ## Data and privacy
 
