@@ -1,12 +1,14 @@
 :root {
-  --primary: #0e9f8e;
-  --primary-dark: #0b7f72;
-  --primary-soft: #e6f6f4;
-  --black: #111827;
-  --gray: #6b7280;
+  --primary: #0F3D47;
+  --primary-dark: #0A2B33;
+  --primary-soft: #E3EFF1;
+  --accent: #F59E7B;
+  --accent-dark: #E8825A;
+  --black: #0F2A31;
+  --gray: #5B7078;
   --white: #ffffff;
-  --off-white: #f7f8fa;
-  --border: #e5e7eb;
+  --off-white: #F4F8FA;
+  --border: #DCE7EA;
   --green: #16a34a;
   --blue: #2563eb;
   --orange: #ea580c;
@@ -15,7 +17,7 @@
   --radius-btn: 10px;
   --radius-card: 12px;
   --shadow: 0 1px 3px rgba(17, 24, 39, 0.06), 0 1px 2px rgba(17, 24, 39, 0.04);
-  --shadow-hover: 0 12px 28px rgba(14, 159, 142, 0.16);
+  --shadow-hover: 0 12px 28px rgba(15, 61, 71, 0.16);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -61,7 +63,7 @@ img {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(14, 159, 142, 0.45);
+  outline: 3px solid rgba(15, 61, 71, 0.45);
   outline-offset: 2px;
 }
 
@@ -249,7 +251,7 @@ img {
 .form-group select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .input-error {
@@ -616,7 +618,7 @@ img {
   outline: none;
   border-color: var(--primary);
   background: var(--white);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .nav-links {
@@ -812,7 +814,7 @@ img {
 .notfound-search input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .notfound-links {
@@ -968,10 +970,10 @@ img {
 
 @keyframes pulse {
   70% {
-    box-shadow: 0 0 0 10px rgba(14, 159, 142, 0);
+    box-shadow: 0 0 0 10px rgba(15, 61, 71, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(14, 159, 142, 0);
+    box-shadow: 0 0 0 0 rgba(15, 61, 71, 0);
   }
 }
 
@@ -1144,7 +1146,7 @@ img {
   height: 8px;
   border-radius: 50%;
   background: var(--primary);
-  box-shadow: 0 0 0 0 rgba(14, 159, 142, 0.6);
+  box-shadow: 0 0 0 0 rgba(15, 61, 71, 0.6);
   animation: pulse 1.8s infinite;
 }
 
@@ -1215,7 +1217,7 @@ img {
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 159, 142, 0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(15, 61, 71, 0.28), transparent 70%);
   transform: translate(-50%, -50%);
 }
 
@@ -1434,7 +1436,7 @@ img {
   position: absolute;
   inset: -18px;
   border-radius: 50%;
-  border: 2px dashed rgba(14, 159, 142, 0.4);
+  border: 2px dashed rgba(15, 61, 71, 0.4);
   animation: spin 18s linear infinite;
 }
 
@@ -2590,7 +2592,7 @@ img {
 }
 
 .trend-area {
-  fill: rgba(14, 159, 142, 0.14);
+  fill: rgba(15, 61, 71, 0.14);
   stroke: none;
   opacity: 0;
 }
@@ -2785,7 +2787,7 @@ img {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: rgba(14, 159, 142, 0.08);
+  background: rgba(15, 61, 71, 0.08);
 }
 
 .band::after {
@@ -3031,7 +3033,7 @@ img {
 }
 
 .drop-area:focus-within {
-  outline: 3px solid rgba(14, 159, 142, 0.45);
+  outline: 3px solid rgba(15, 61, 71, 0.45);
   outline-offset: 2px;
 }
 
@@ -3382,7 +3384,7 @@ img {
 .history-search input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .tool-group {
@@ -3405,7 +3407,7 @@ img {
 .tool-select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .view-toggle {
@@ -3723,7 +3725,7 @@ img {
 .edit-field input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14, 159, 142, 0.18);
+  box-shadow: 0 0 0 3px rgba(15, 61, 71, 0.18);
 }
 
 .edit-actions {
