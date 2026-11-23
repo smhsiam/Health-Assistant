@@ -20,6 +20,7 @@ import SharedReportView from './pages/SharedReportView';
 import Consultations from './pages/Consultations';
 import ConsultationThread from './pages/ConsultationThread';
 import NotFound from './pages/NotFound';
+import WhyChooseUs from './components/WhyChooseUs';
 import { useLanguage } from './context/LanguageContext';
 
 const authPaths = ['/login', '/register', '/register-doctor'];
@@ -168,6 +169,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      {location.pathname === '/' && <WhyChooseUs />}
       {!hideLayout && <Footer />}
     </>
   );

@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import api from '../api/axios';
 import { useLanguage } from '../context/LanguageContext';
 
 function Doctors() {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const urlSpecialty = params.get('specialty') || '';
 
   const [doctors, setDoctors] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(urlSpecialty);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [starting, setStarting] = useState(null);
@@ -29,8 +31,9 @@ function Doctors() {
   };
 
   useEffect(() => {
-    load('');
-  }, []);
+    setQuery(urlSpecialty);
+    load(urlSpecialty);
+  }, [urlSpecialty]);
 
   const handleSearch = (e) => {
     e.preventDefault();
