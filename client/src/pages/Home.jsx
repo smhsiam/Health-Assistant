@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedText from '../components/AnimatedText';
 
 const SLIDE_MS = 6500;
 const HERO_MS = 5500;
@@ -515,7 +516,7 @@ function Home() {
       <section className="band">
         <div className="container">
           <div className="section-head reveal">
-            <h2>{t('svcTitle')}</h2>
+            <AnimatedText text={t('svcTitle')} />
             <p>{t('svcSub')}</p>
           </div>
 
@@ -562,7 +563,7 @@ function Home() {
 
         <section className="section">
           <div className="section-head reveal">
-            <h2>{t('howTitle')}</h2>
+            <AnimatedText text={t('howTitle')} />
             <p>{t('howSub')}</p>
           </div>
 
@@ -586,7 +587,7 @@ function Home() {
 
         <section className="section">
           <div className="section-head reveal">
-            <h2>{t('safetyTitle')}</h2>
+            <AnimatedText text={t('safetyTitle')} />
             <p>{t('safetySub')}</p>
           </div>
 
@@ -608,7 +609,7 @@ function Home() {
         </section>
 
         <section className="cta reveal">
-          <h2>{t('ctaTitle')}</h2>
+          <AnimatedText text={t('ctaTitle')} bar={false} />
           <p>{t('ctaText')}</p>
           <div className="cta-buttons">
             <Link to="/register" className="btn-white">
