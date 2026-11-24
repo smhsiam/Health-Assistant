@@ -4430,3 +4430,12 @@ footer.ft{background:#0F3D47;color:#F4F8FA;margin-top:48px;padding:0}
 
 .section-head .at-wrap{margin-bottom:12px}
 .cta .at-wrap{margin-bottom:12px}
+
+.rp{position:relative;display:inline-flex;align-items:center;gap:10px;width:fit-content;align-self:flex-start;padding:9px 18px;margin-bottom:18px;border-radius:999px;border:1px solid rgba(244,248,250,0.45);background:rgba(15,61,71,0.55);backdrop-filter:blur(6px);color:#F4F8FA;font-weight:700;font-size:0.9rem;overflow:hidden}
+.rp-track{display:grid}
+.rp-msg{grid-area:1/1;display:inline-flex;align-items:center;gap:8px;opacity:0;transform:translateY(10px);filter:blur(3px);transition:opacity 500ms ease,transform 500ms var(--ease),filter 500ms ease}
+.rp-msg.on{opacity:1;transform:none;filter:none}
+.rp-msg i{color:#F59E7B}
+.rp-shine{position:absolute;top:0;bottom:0;left:-40%;width:35%;background:linear-gradient(100deg,transparent,rgba(244,248,250,0.45),transparent);transform:skewX(-20deg);animation:rpShine 1100ms ease-out 1;pointer-events:none}
+@keyframes rpShine{from{left:-40%}to{left:120%}}
+@media (prefers-reduced-motion:reduce){.rp-msg{transition:none}.rp-shine{display:none}}

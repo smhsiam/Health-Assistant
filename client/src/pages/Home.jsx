@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedText from '../components/AnimatedText';
+import RotatingPill from '../components/RotatingPill';
 
 const SLIDE_MS = 6500;
 const HERO_MS = 5500;
@@ -358,10 +359,7 @@ function Home() {
           </div>
           
           <div className="hero-content fade-up">
-            <div className="hero-badge">
-              <span className="pulse-dot"></span>
-              {t('heroBadge')}
-            </div>
+            <RotatingPill />
             <h1 className="hero-title">
               {t('heroLine1')}{' '}
               <span className="gradient-text">{t('heroLine2')}</span>
