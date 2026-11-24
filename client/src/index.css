@@ -4439,3 +4439,59 @@ footer.ft{background:#0F3D47;color:#F4F8FA;margin-top:48px;padding:0}
 .rp-shine{position:absolute;top:0;bottom:0;left:-40%;width:35%;background:linear-gradient(100deg,transparent,rgba(244,248,250,0.45),transparent);transform:skewX(-20deg);animation:rpShine 1100ms ease-out 1;pointer-events:none}
 @keyframes rpShine{from{left:-40%}to{left:120%}}
 @media (prefers-reduced-motion:reduce){.rp-msg{transition:none}.rp-shine{display:none}}
+
+.cc{padding:56px 0 24px}
+.cc-sub{text-align:center;color:var(--gray);max-width:640px;margin:0 auto 28px}
+.cc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;transition:opacity 450ms ease,filter 450ms ease,transform 450ms var(--ease)}
+.cc-row.cc-out{opacity:0;filter:blur(6px);transform:translateY(8px)}
+.cc-card{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:24px;background:#fff;border:1px solid var(--border);border-radius:16px;transition:transform 300ms var(--ease),border-color 300ms ease,box-shadow 300ms ease}
+.cc-card:hover,.cc-card:focus-visible{transform:translateY(-4px);border-color:#F59E7B;box-shadow:var(--shadow-hover)}
+.cc-card h3{margin:0;color:var(--primary)}
+.cc-card p{margin:0;color:var(--gray)}
+.cc-card small{margin-top:6px;color:var(--primary);font-weight:700}
+.cc-icon{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:var(--primary-soft);color:var(--primary);font-size:1.2rem}
+.cc-shine{position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(245,158,123,0.28),transparent);transform:skewX(-20deg);pointer-events:none}
+.cc-card:hover .cc-shine,.cc-card:focus-visible .cc-shine{animation:ccShine 900ms ease-out 1}
+@keyframes ccShine{from{left:-60%}to{left:130%}}
+.cc-dots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.cc-dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--border);transition:width 300ms var(--ease),background 300ms ease}
+.cc-dot.on{width:28px;border-radius:999px;background:#F59E7B}
+@media (max-width:760px){.cc-row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cc-row,.cc-card{transition:none}.cc-card:hover .cc-shine,.cc-card:focus-visible .cc-shine{animation:none}}
+EOFcd /d/Health-Assistant
+cd client
+cat > src/i18n/en_add.tmp <<'EOF'
+  ccTitle: 'The kinds of tests we read',
+  ccSub: 'These categories are in our rules table. A test outside the table is shown as unknown and you are asked to check it.',
+  ccTests: 'test(s) in our rules table',
+  cc_blood: 'Blood count',
+  cc_blood_text: 'Common blood count values',
+  cc_kidney: 'Kidney',
+  cc_kidney_text: 'Values about how the kidneys work',
+  cc_lipid: 'Cholesterol and fats',
+  cc_lipid_text: 'Values about fats in the blood',
+  cc_liver: 'Liver',
+  cc_liver_text: 'Values about how the liver works',
+  cc_sugar: 'Blood sugar',
+  cc_sugar_text: 'Values about sugar in the blood',
+  cc_thyroid: 'Thyroid',
+  cc_thyroid_text: 'A value about thyroid function',
+
+.cc{padding:56px 0 24px}
+.cc-sub{text-align:center;color:var(--gray);max-width:640px;margin:0 auto 28px}
+.cc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;transition:opacity 450ms ease,filter 450ms ease,transform 450ms var(--ease)}
+.cc-row.cc-out{opacity:0;filter:blur(6px);transform:translateY(8px)}
+.cc-card{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:24px;background:#fff;border:1px solid var(--border);border-radius:16px;transition:transform 300ms var(--ease),border-color 300ms ease,box-shadow 300ms ease}
+.cc-card:hover,.cc-card:focus-visible{transform:translateY(-4px);border-color:#F59E7B;box-shadow:var(--shadow-hover)}
+.cc-card h3{margin:0;color:var(--primary)}
+.cc-card p{margin:0;color:var(--gray)}
+.cc-card small{margin-top:6px;color:var(--primary);font-weight:700}
+.cc-icon{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:var(--primary-soft);color:var(--primary);font-size:1.2rem}
+.cc-shine{position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(245,158,123,0.28),transparent);transform:skewX(-20deg);pointer-events:none}
+.cc-card:hover .cc-shine,.cc-card:focus-visible .cc-shine{animation:ccShine 900ms ease-out 1}
+@keyframes ccShine{from{left:-60%}to{left:130%}}
+.cc-dots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.cc-dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--border);transition:width 300ms var(--ease),background 300ms ease}
+.cc-dot.on{width:28px;border-radius:999px;background:#F59E7B}
+@media (max-width:760px){.cc-row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cc-row,.cc-card{transition:none}.cc-card:hover .cc-shine,.cc-card:focus-visible .cc-shine{animation:none}}

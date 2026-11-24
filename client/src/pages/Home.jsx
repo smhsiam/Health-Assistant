@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedText from '../components/AnimatedText';
 import RotatingPill from '../components/RotatingPill';
+import CategoryCards from '../components/CategoryCards';
 
 const SLIDE_MS = 6500;
 const HERO_MS = 5500;
@@ -540,6 +541,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <CategoryCards />
 
       <div className="container landing-rest">
         <section className="section">
