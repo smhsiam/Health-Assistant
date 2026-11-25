@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import AuthLayout from '../components/AuthLayout';
+import RoleSwitch from '../components/RoleSwitch';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
@@ -70,7 +71,8 @@ function Register() {
   };
 
   return (
-    <AuthLayout title={t('registerTitle')} subtitle={t('registerSub')}>
+    <AuthLayout title={t('rsPatientTitle')} subtitle={t('rsPatientSub')}>
+      <RoleSwitch active="patient" />
       {serverError && (
         <div className="error-banner" role="alert">
           {serverError}

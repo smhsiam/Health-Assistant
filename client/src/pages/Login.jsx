@@ -133,7 +133,7 @@ function Login() {
       </form>
 
       <p className="auth-switch">
-        {t('noAccount')} <Link to="/register">{t('register')}</Link>
+        {t('noAccount')} <Link to="/register">{t('rsRegPatient')}</Link> {t('rsOr')} <Link to="/register-doctor">{t('rsRegDoctor')}</Link>
       </p>
     </AuthLayout>
   );

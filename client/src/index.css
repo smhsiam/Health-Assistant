@@ -4495,3 +4495,13 @@ cat > src/i18n/en_add.tmp <<'EOF'
 .cc-dot.on{width:28px;border-radius:999px;background:#F59E7B}
 @media (max-width:760px){.cc-row{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.cc-row,.cc-card{transition:none}.cc-card:hover .cc-shine,.cc-card:focus-visible .cc-shine{animation:none}}
+
+.rs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 20px}
+.rs-opt{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 10px;text-align:center;border:2px solid var(--border);border-radius:12px;background:#fff;color:var(--primary);transition:border-color 250ms ease,background 250ms ease,transform 250ms var(--ease)}
+.rs-opt i{font-size:1.4rem}
+.rs-opt small{color:var(--gray);font-size:0.78rem;line-height:1.4}
+.rs-opt:hover{border-color:#F59E7B;transform:translateY(-2px)}
+.rs-opt.on{border-color:var(--primary);background:var(--primary);color:#F4F8FA}
+.rs-opt.on small{color:rgba(244,248,250,0.85)}
+.rs-opt.on i{color:#F59E7B}
+@media (prefers-reduced-motion:reduce){.rs-opt{transition:none}}
