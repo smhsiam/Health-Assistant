@@ -35,7 +35,7 @@ const services = [
 
 const stats = [
   { end: 2, suffix: '', label: 'statLanguages' },
-  { end: 7, suffix: '', label: 'statCategories' },
+  { end: 6, suffix: '', label: 'statCategories' },
   { end: 100, suffix: '%', label: 'statRules' },
   { end: 3, suffix: '', label: 'statPromises' },
 ];
