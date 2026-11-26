@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedText from '../components/AnimatedText';
+import StorySection from '../components/StorySection';
 import RotatingPill from '../components/RotatingPill';
 import CategoryCards from '../components/CategoryCards';
 
@@ -608,6 +609,8 @@ function Home() {
             ))}
           </div>
         </section>
+
+        <StorySection />
 
         <section className="cta reveal">
           <AnimatedText text={t('ctaTitle')} bar={false} />
