@@ -1,6 +1,6 @@
 const homeFor = (user) => {
   if (!user) {
-    return '/upload';
+    return '/dashboard';
   }
 
   if (user.role === 'doctor') {
@@ -11,7 +11,7 @@ const homeFor = (user) => {
     return '/admin/doctors';
   }
 
-  return '/upload';
+  return '/dashboard';
 };
 
 export { homeFor };

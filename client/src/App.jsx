@@ -20,6 +20,7 @@ import SharedReportView from './pages/SharedReportView';
 import Consultations from './pages/Consultations';
 import ConsultationThread from './pages/ConsultationThread';
 import NotFound from './pages/NotFound';
+import Dashboard from './pages/Dashboard';
 import WhyChooseUs from './components/WhyChooseUs';
 import { useLanguage } from './context/LanguageContext';
 
@@ -58,7 +59,7 @@ function App() {
             path="/dashboard"
             element={
               <ProtectedRoute roles={patientRoles}>
-                <ComingSoon title="dashboard" />
+                <Dashboard />
               </ProtectedRoute>
             }
           />

@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import AnimatedLogo from './AnimatedLogo';
 
 const patientLinks = [
+  { to: '/dashboard', label: 'dbNav' },
   { to: '/upload', label: 'upload' },
   { to: '/history', label: 'history' },
   { to: '/trends', label: 'trends' },
@@ -15,6 +16,7 @@ const patientLinks = [
 
 const adminLinks = [
   { to: '/admin/doctors', label: 'tmNavVerify' },
+  { to: '/dashboard', label: 'dbNav' },
   { to: '/doctors', label: 'tmNavDoctors' },
   { to: '/consultations', label: 'tcNavConsult' },
   { to: '/upload', label: 'upload' },

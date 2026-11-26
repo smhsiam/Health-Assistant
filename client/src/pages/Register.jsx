@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import AuthLayout from '../components/AuthLayout';
 import RoleSwitch from '../components/RoleSwitch';
+import { homeFor } from '../utils/roleHome';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
@@ -23,7 +24,7 @@ function Register() {
   const [loading, setLoading] = useState(false);
 
   if (user) {
-    return <Navigate to="/upload" replace />;
+    return <Navigate to={homeFor(user)} replace />;
   }
 
   const handleChange = (e) => {
