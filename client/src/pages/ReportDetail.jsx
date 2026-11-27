@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import UrgencyBanner from '../components/UrgencyBanner';
 import DoctorNotice from '../components/DoctorNotice';
 import ShareDoctors from '../components/ShareDoctors';
+import OriginalFile from '../components/OriginalFile';
 import AskReport from '../components/AskReport';
 import ValueTable from '../components/ValueTable';
 import ExplanationSection from '../components/ExplanationSection';
@@ -167,7 +168,12 @@ function ReportDetail() {
         </div>
       </div>
 
-      <ValueTable values={values} editable onSave={handleSave} />
+      <div className={`orig-layout ${data.hasFile ? 'has-orig' : ''}`}>
+        <div className="orig-main">
+          <ValueTable values={values} editable onSave={handleSave} />
+        </div>
+        {data.hasFile && <OriginalFile path={`/reports/${id}/file`} />}
+      </div>
 
       <ExplanationSection values={values} />
 

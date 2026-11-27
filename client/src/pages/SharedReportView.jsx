@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import api from '../api/axios';
 import { useLanguage } from '../context/LanguageContext';
 import ValueTable from '../components/ValueTable';
+import OriginalFile from '../components/OriginalFile';
 
 function SharedReportView() {
   const { id } = useParams();
@@ -90,7 +91,14 @@ function SharedReportView() {
         </div>
       )}
 
-      <ValueTable values={values} />
+      <div className={`orig-layout ${data.hasFile ? 'has-orig' : ''}`}>
+        <div className="orig-main">
+          <ValueTable values={values} />
+        </div>
+        {data.hasFile && (
+          <OriginalFile path={`/shares/incoming/${id}/file`} />
+        )}
+      </div>
     </div>
   );
 }

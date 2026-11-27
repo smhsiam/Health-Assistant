@@ -3,6 +3,7 @@ const reportModel = require('../models/reportModel');
 const valueModel = require('../models/valueModel');
 const doctorModel = require('../models/doctorModel');
 const { formatReport, formatValue } = require('./reportController');
+const fileModel = require('../models/fileModel');
 
 const readId = (input) => {
   const id = Number(input);
@@ -150,6 +151,7 @@ const getIncomingReport = async (req, res, next) => {
         birthYear: report.birth_year,
       },
       values,
+      hasFile: await fileModel.exists(reportId),
     });
   } catch (error) {
     next(error);

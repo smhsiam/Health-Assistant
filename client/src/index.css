@@ -4548,3 +4548,13 @@ cat > src/i18n/en_add.tmp <<'EOF'
 .st-badge i{color:#E8825A}
 @media (max-width:860px){.st-grid{grid-template-columns:1fr;gap:28px}}
 @media (prefers-reduced-motion:reduce){.st-img{transition:none;transform:none}}
+
+.orig-layout{display:block}
+.orig-layout.has-orig{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}
+.orig-main{min-width:0}
+.orig-panel{position:sticky;top:90px;background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px}
+.orig-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.orig-head h3{margin:0;color:var(--primary);font-size:1.05rem}
+.orig-frame{width:100%;height:70vh;border:0;border-radius:8px;background:var(--off-white)}
+.orig-img{width:100%;height:auto;max-height:75vh;object-fit:contain;border-radius:8px;display:block;background:var(--off-white)}
+@media (max-width:980px){.orig-layout.has-orig{grid-template-columns:1fr}.orig-panel{position:static}}
