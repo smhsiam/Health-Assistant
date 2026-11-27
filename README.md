@@ -48,7 +48,7 @@ Health Assistant is a reading aid, not a medical opinion. The AI never diagnoses
 | Value correction and clinician summary page | Should | Done |
 | Delete a report | Should | Done |
 | Responsive bilingual interface and landing page | Must | Done |
-| Original report shown beside extracted values | Must | Planned |
+| Original report shown beside extracted values | Must | Done |
 | Follow up questions about a report, answered by the AI with safety filters and rate limits | Could | Done |
 | Diet guidance, voice read-aloud, SMS summary | Should and Could | Planned |
 | Evaluation against a hand-made answer sheet | Must | In progress |
@@ -160,7 +160,7 @@ Profiles and trends have their own routes under /api/profiles and /api/trends.
 
 1. Scanned PDFs are not read. The user is asked to upload a clear photo as JPG or PNG instead.
 2. OCR reads English only. Blurry, tilted or dark photos can be misread, so values from weak photos are marked for the user to verify.
-3. Uploaded files are deleted right after processing. The original report is therefore not yet shown beside the values. Keeping files in a private store is planned and depends on a pending decision.
+3. The original file of a report is stored in the database. It is private to the owner and to doctors with an active share, and it is deleted with the report. Files in the database use space, so the size of a free database plan matters.
 4. The BMDC number is checked by an admin by hand. A number typed by a doctor is not proof of registration, so an admin must compare it with the official BMDC list.
 5. The consultation chat refreshes every 8 seconds, which costs data on very slow networks.
 6. Message sending has only the general API rate limit. A stricter limit is planned.
