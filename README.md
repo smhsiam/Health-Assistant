@@ -112,7 +112,7 @@ Requirements: Node.js and PostgreSQL.
 ```
 cd server
 npm install
-node src/scripts/runSql.js database/schema.sql database/telemedicine.sql
+node src/scripts/runSql.js database/schema.sql database/telemedicine.sql database/report_files.sql
 ```
 
 5. Start the server

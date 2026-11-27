@@ -7,6 +7,7 @@ const {
   listIncoming,
   getIncomingReport,
 } = require('../controllers/shareController');
+const { getSharedFile } = require('../controllers/fileController');
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.use(protect);
 
 router.get('/incoming', requireRole('doctor'), listIncoming);
 router.get('/incoming/:reportId', requireRole('doctor'), getIncomingReport);
+router.get('/incoming/:reportId/file', requireRole('doctor'), getSharedFile);
 
 router.post('/', requireRole('patient', 'admin'), createShare);
 router.get('/report/:reportId', requireRole('patient', 'admin'), listForReport);

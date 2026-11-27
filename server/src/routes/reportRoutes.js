@@ -9,6 +9,7 @@ const {
   deleteReport,
 } = require('../controllers/reportActionController');
 const { askAboutReport } = require('../controllers/reportQuestionController');
+const { getOwnFile } = require('../controllers/fileController');
 const { protect, requireRole } = require('../middleware/authMiddleware');
 const { uploadSingle } = require('../middleware/uploadMiddleware');
 const { uploadLimiter } = require('../middleware/rateLimiter');
@@ -30,6 +31,7 @@ router.post(
 );
 router.get('/', protect, patientOnly, listReports);
 router.get('/:id', protect, patientOnly, getReport);
+router.get('/:id/file', protect, patientOnly, getOwnFile);
 router.put('/:id/values/:valueId', protect, patientOnly, updateValue);
 router.post(
   '/:id/ask',

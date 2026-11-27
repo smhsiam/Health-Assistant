@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS report_files (
+  report_id INTEGER PRIMARY KEY REFERENCES reports(id) ON DELETE CASCADE,
+  mime_type VARCHAR(50) NOT NULL,
+  size_bytes INTEGER NOT NULL,
+  data BYTEA NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);

@@ -8,6 +8,7 @@ const { explainValue } = require('../services/explanationService');
 const reportModel = require('../models/reportModel');
 const valueModel = require('../models/valueModel');
 const profileModel = require('../models/profileModel');
+const fileModel = require('../models/fileModel');
 
 const LOW_OCR_CONFIDENCE = 70;
 
@@ -135,16 +136,16 @@ const createReport = async (req, res, next) => {
         .json({ message: 'This file is not a valid PDF, JPG or PNG' });
     }
 
+    const fileBuffer = await fs.readFile(file.path);
+
     let text = '';
     let ocrConfidence = null;
     let weakOcr = false;
 
     if (kind === 'pdf') {
-      const buffer = await fs.readFile(file.path);
-
       let extracted;
       try {
-        extracted = await extractPdfText(buffer);
+        extracted = await extractPdfText(fileBuffer);
       } catch (error) {
         return res.status(422).json({
           message:
@@ -224,6 +225,15 @@ const createReport = async (req, res, next) => {
       values: rows,
     });
 
+    let fileStored = true;
+
+    try {
+      await fileModel.save(saved.report.id, file.mimetype, fileBuffer);
+    } catch (error) {
+      fileStored = false;
+      console.error('Saving the original file failed:', error.message);
+    }
+
     res.status(201).json({
       report: formatReport(saved.report),
       values: saved.values.map(formatValue),
@@ -231,6 +241,7 @@ const createReport = async (req, res, next) => {
       aiUsed: outcome.usedAi,
       source: kind,
       ocrConfidence,
+      hasFile: fileStored,
     });
   } catch (error) {
     next(error);
@@ -295,11 +306,13 @@ const getReport = async (req, res, next) => {
     }
 
     const rows = await valueModel.listByReport(id);
+    const hasFile = await fileModel.exists(id);
 
     res.json({
       report: formatReport(report),
       values: rows.map(formatValue),
       urgencyMessage: report.has_critical ? urgencyMessage : null,
+      hasFile,
     });
   } catch (error) {
     next(error);
