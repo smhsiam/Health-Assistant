@@ -546,7 +546,7 @@ const en = {
 
     aiOptionLabel: 'Let AI help read this report if our own reader cannot',
   aiOptionHint:
-    'Used only when our own reader finds fewer than three tests. Lines with personal details such as name, age, dates and phone numbers are removed first, and the remaining text is sent to an outside AI service. Anything the AI reads is marked, so you can check it against your original report.',
+    'Used only when our own reader finds fewer than three tests. Lines that look like personal details, such as lines with a name, age, sex, phone, address or email label, or a long ID number, are dropped first. This filter is not perfect: a name written on a line without a label can still be sent. The remaining text is sent to an outside AI service. Anything the AI reads is marked, so you can check it against your original report.',
   aiOptionOff: 'AI reading is not switched on in this version.',
   readByAi: 'Read by AI',
 

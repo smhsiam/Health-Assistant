@@ -6,7 +6,7 @@ const useSsl = String(process.env.DATABASE_SSL || '').toLowerCase() === 'true';
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: useSsl ? { rejectUnauthorized: false } : false,
-  max: 10,
+  max: Number(process.env.DB_POOL_MAX) || 5,
 });
 
 pool.on('error', (err) => {
