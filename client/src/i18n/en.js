@@ -379,8 +379,7 @@ const en = {
   dropTitle: 'Drop your PDF here or click to choose',
   dropHint: 'Typed PDF reports only, up to 5 MB',
   privacyLine:
-    'Your file is deleted from our server right after it is read. Only the test values are saved to your account.',
-  scanNote: 'Scanned or photo reports are not supported yet.',
+    'Your report file is kept in your private account so you can compare it with the values. Only you, and a doctor you share the report with, can open it in the app. It is deleted when you delete the report.',
   submitReport: 'Read my report',
   uploading: 'Uploading your report',
   checkingValues: 'Reading and checking your values',
@@ -450,7 +449,7 @@ const en = {
   deleteReport: 'Delete report',
   deleteTitle: 'Delete this report?',
   deleteText:
-    'The report and all its values will be removed from your account. This cannot be undone.',
+    'The report, its values and the original file will be removed from your account. This cannot be undone.',
   deleteConfirm: 'Yes, delete',
   deleting: 'Deleting',
   reportDeleted: 'Report deleted',
